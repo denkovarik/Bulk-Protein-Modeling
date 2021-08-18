@@ -130,5 +130,6 @@ dmypy.json
 
 # Project folders
 ncbi-blast-2.12.0+/
+blast_rslts/
 
 
