@@ -1,0 +1,640 @@
+PSIBLAST 2.12.0+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+Reference for compositional score matrix adjustment: Stephen F.
+Altschul, John C. Wootton, E. Michael Gertz, Richa Agarwala,
+Aleksandr Morgulis, Alejandro A. Schaffer, and Yi-Kuo Yu (2005)
+"Protein database searches using compositionally adjusted
+substitution matrices", FEBS J. 272:5101-5109.
+
+
+Reference for composition-based statistics starting in round 2:
+Alejandro A. Schaffer, L. Aravind, Thomas L. Madden, Sergei
+Shavirin, John L. Spouge, Yuri I. Wolf, Eugene V. Koonin, and
+Stephen F. Altschul (2001), "Improving the accuracy of PSI-BLAST
+protein database searches with composition-based statistics and
+other refinements", Nucleic Acids Res. 29:2994-3005.
+
+
+
+Database: PDB protein database
+           130,881 sequences; 34,844,698 total letters
+
+Results from round 1
+
+
+Query= test_1
+
+Length=369
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+4JOM_A Structure of E. coli Pol III 3mPHP mutant [Escherichia col...  231     4e-68
+2HNH_A Crystal structure of the catalytic alpha subunit of E. col...  227     1e-66
+5M1S_A Cryo-EM structure of the E. coli replicative DNA polymeras...  227     1e-66
+5FKU_A cryo-EM structure of the E. coli replicative DNA polymeras...  227     5e-66
+2HQA_A Crystal structure of the catalytic alpha subunit of E. Col...  209     3e-60
+5LEW_A DNA polymerase [Mycobacterium tuberculosis H37Rv]              207     1e-59
+2HPI_A Eubacterial and Eukaryotic Replicative DNA Polymerases are...  196     2e-55
+3E0D_A Insights into the Replisome from the Crystral Structure of...  196     3e-55
+4GX9_A Crystal structure of a DNA polymerase III alpha-epsilon ch...  123     1e-31
+4GX8_A Crystal structure of a DNA polymerase III alpha-epsilon ch...  122     1e-31
+3F2B_A DNA Polymerase PolC from Geobacillus kaustophilus complex ...  84.0    6e-17
+7LS6_H Chain H, Proteasome maturation factor UMP1 [Saccharomyces ...  32.0    0.69 
+7A7D_A Cadherin fit into cryo-ET map [Homo sapiens]                   32.7    1.1  
+5ERD_A Crystal structure of human Desmoglein-2 ectodomain [Homo s...  32.7    1.1  
+5J5J_A Crystal structure of a chimera of human Desmocollin-2 EC1 ...  32.3    1.2  
+6Q4S_A Crystal structure of a-eudesmol synthase [Streptomyces cha...  32.0    1.5  
+3B0Y_A K263D mutant of PolX from Thermus thermophilus HB8 complex...  32.0    1.7  
+3B0X_A K263A mutant of PolX from Thermus thermophilus HB8 complex...  32.0    1.8  
+3AU2_A DNA polymerase X from Thermus thermophilus HB8 complexed w...  32.0    1.8  
+5GIR_B Crystal structure of a Fab fragment with its ligand peptid...  29.3    9.3  
+
+
+>4JOM_A Structure of E. coli Pol III 3mPHP mutant [Escherichia coli K-12]
+Length=918
+
+ Score = 231 bits (590),  Expect = 4e-68, Method: Compositional matrix adjust.
+ Identities = 155/391 (40%), Positives = 211/391 (54%), Gaps = 29/391 (7%)
+
+Query  3    FVHLHVLSGYSLFQSTATVEALVAKAKQLGYRALALTDHQVLYGAIPFYRECQRHGLRPI  62
+            FVHLHV S YS+    A    LV KA  LG  ALA+TDH  L G + FY      G++PI
+Sbjct  7    FVHLHVHSDYSMIDGLAKTAPLVKKAAALGMPALAITDHTNLCGLVKFYGAGHGAGIKPI  66
+
+Query  63   IGMMADVVLD--GDSGAFPLVLLAANEEGYRHL-IEISTAVQMGEEKH---VHEAALRRL  116
+            +G   +V  D  GD     L +LAAN  GY++L + IS A Q G       +    L  L
+Sbjct  67   VGADFNVQCDLLGDELTH-LTVLAANNTGYQNLTLLISKAYQRGYGAAGPIIDRDWLIEL  125
+
+Query  117  SGGIIAITPGLNGRVESFLAAGEVAQAKETLLRYRQLFAGCLYIAIQR-GERTRAPYESA  175
+            + G+I ++ G  G V   L  G  A   E +  Y + F    ++ + R G      Y  A
+Sbjct  126  NEGLILLSGGRMGDVGRSLLRGNSALVDECVAFYEEHFPDRYFLELIRTGRPDEESYLHA  185
+
+Query  176  LLRLAEETGVPVVATNEVRYVEREDALAWRCLEAIGDGV-------PLAHIPEEDERYLA  228
+             + LAE  G+PVVATN+V +++  D  A     AI DG        P  + P++   Y+ 
+Sbjct  186  AVELAEARGLPVVATNDVHFIDSSDFDAHEIRVAIHDGFTLDDPKRPRNYSPQQ---YMR  242
+
+Query  229  APDEMARRFADLPEALENSMNIANQCELHIEFGRWRLPKFPVPDGETADSYLRRLCEQGL  288
+            + +EM   FAD+PEAL N++ IA +C + +  G + LP+FP  D  T D YL +  ++GL
+Sbjct  243  SEEEMCELFADIPEALANTVEIAKRCNVTVRLGEYFLPQFPTGDMSTED-YLVKRAKEGL  301
+
+Query  289  ARRV----PSADAR------YRERLEHELHIIQTMRFSDYFLIVADVLAYARQRGILTGP  338
+              R+    P  + R      Y ERLE EL +I  M F  YFLIV + + +++  G+  GP
+Sbjct  302  EERLAFLFPDEEERLKRRPEYDERLETELQVINQMGFPGYFLIVMEFIQWSKDNGVPVGP  361
+
+Query  339  GRGSAAGSLVAYALSITDVDPIEYGLLFERF  369
+            GRGS AGSLVAYAL ITD+DP+E+ LLFERF
+Sbjct  362  GRGSGAGSLVAYALKITDLDPLEFDLLFERF  392
+
+
+>2HNH_A Crystal structure of the catalytic alpha subunit of E. coli replicative 
+DNA polymerase III [Escherichia coli]
+Length=910
+
+ Score = 227 bits (578),  Expect = 1e-66, Method: Compositional matrix adjust.
+ Identities = 154/391 (39%), Positives = 210/391 (54%), Gaps = 29/391 (7%)
+
+Query  3    FVHLHVLSGYSLFQSTATVEALVAKAKQLGYRALALTDHQVLYGAIPFYRECQRHGLRPI  62
+            FVHL V S YS+    A    LV KA  LG  ALA+TD   L G + FY      G++PI
+Sbjct  6    FVHLRVHSDYSMIDGLAKTAPLVKKAAALGMPALAITDFTNLCGLVKFYGAGHGAGIKPI  65
+
+Query  63   IGMMADVVLD--GDSGAFPLVLLAANEEGYRHL-IEISTAVQMGEEKH---VHEAALRRL  116
+            +G   +V  D  GD     L +LAAN  GY++L + IS A Q G       +    L  L
+Sbjct  66   VGADFNVQCDLLGDELTH-LTVLAANNTGYQNLTLLISKAYQRGYGAAGPIIDRDWLIEL  124
+
+Query  117  SGGIIAITPGLNGRVESFLAAGEVAQAKETLLRYRQLFAGCLYIAIQR-GERTRAPYESA  175
+            + G+I ++ G  G V   L  G  A   E +  Y + F    ++ + R G      Y  A
+Sbjct  125  NEGLILLSGGRMGDVGRSLLRGNSALVDECVAFYEEHFPDRYFLELIRTGRPDEESYLHA  184
+
+Query  176  LLRLAEETGVPVVATNEVRYVEREDALAWRCLEAIGDGV-------PLAHIPEEDERYLA  228
+             + LAE  G+PVVATN+VR+++  D  A     AI DG        P  + P++   Y+ 
+Sbjct  185  AVELAEARGLPVVATNDVRFIDSSDFDAHEIRVAIHDGFTLDDPKRPRNYSPQQ---YMR  241
+
+Query  229  APDEMARRFADLPEALENSMNIANQCELHIEFGRWRLPKFPVPDGETADSYLRRLCEQGL  288
+            + +EM   FAD+PEAL N++ IA +C + +  G + LP+FP  D  T D YL +  ++GL
+Sbjct  242  SEEEMCELFADIPEALANTVEIAKRCNVTVRLGEYFLPQFPTGDMSTED-YLVKRAKEGL  300
+
+Query  289  ARRV----PSADAR------YRERLEHELHIIQTMRFSDYFLIVADVLAYARQRGILTGP  338
+              R+    P  + R      Y ERLE EL +I  M F  YFLIV + + +++  G+  GP
+Sbjct  301  EERLAFLFPDEEERLKRRPEYDERLETELQVINQMGFPGYFLIVMEFIQWSKDNGVPVGP  360
+
+Query  339  GRGSAAGSLVAYALSITDVDPIEYGLLFERF  369
+            GRGS AGSLVAYAL ITD+DP+E+ LLFERF
+Sbjct  361  GRGSGAGSLVAYALKITDLDPLEFDLLFERF  391
+
+
+>5M1S_A Cryo-EM structure of the E. coli replicative DNA polymerase-clamp-exonuclase-theta 
+complex bound to DNA in the editing mode 
+[Escherichia coli K-12]
+Length=927
+
+ Score = 227 bits (579),  Expect = 1e-66, Method: Compositional matrix adjust.
+ Identities = 154/391 (39%), Positives = 210/391 (54%), Gaps = 29/391 (7%)
+
+Query  3    FVHLHVLSGYSLFQSTATVEALVAKAKQLGYRALALTDHQVLYGAIPFYRECQRHGLRPI  62
+            FVHL V S YS+    A    LV KA  LG  ALA+TD   L G + FY      G++PI
+Sbjct  6    FVHLRVHSDYSMIDGLAKTAPLVKKAAALGMPALAITDFTNLCGLVKFYGAGHGAGIKPI  65
+
+Query  63   IGMMADVVLD--GDSGAFPLVLLAANEEGYRHL-IEISTAVQMGEEKH---VHEAALRRL  116
+            +G   +V  D  GD     L +LAAN  GY++L + IS A Q G       +    L  L
+Sbjct  66   VGADFNVQCDLLGDELTH-LTVLAANNTGYQNLTLLISKAYQRGYGAAGPIIDRDWLIEL  124
+
+Query  117  SGGIIAITPGLNGRVESFLAAGEVAQAKETLLRYRQLFAGCLYIAIQR-GERTRAPYESA  175
+            + G+I ++ G  G V   L  G  A   E +  Y + F    ++ + R G      Y  A
+Sbjct  125  NEGLILLSGGRMGDVGRSLLRGNSALVDECVAFYEEHFPDRYFLELIRTGRPDEESYLHA  184
+
+Query  176  LLRLAEETGVPVVATNEVRYVEREDALAWRCLEAIGDGV-------PLAHIPEEDERYLA  228
+             + LAE  G+PVVATN+VR+++  D  A     AI DG        P  + P++   Y+ 
+Sbjct  185  AVELAEARGLPVVATNDVRFIDSSDFDAHEIRVAIHDGFTLDDPKRPRNYSPQQ---YMR  241
+
+Query  229  APDEMARRFADLPEALENSMNIANQCELHIEFGRWRLPKFPVPDGETADSYLRRLCEQGL  288
+            + +EM   FAD+PEAL N++ IA +C + +  G + LP+FP  D  T D YL +  ++GL
+Sbjct  242  SEEEMCELFADIPEALANTVEIAKRCNVTVRLGEYFLPQFPTGDMSTED-YLVKRAKEGL  300
+
+Query  289  ARRV----PSADAR------YRERLEHELHIIQTMRFSDYFLIVADVLAYARQRGILTGP  338
+              R+    P  + R      Y ERLE EL +I  M F  YFLIV + + +++  G+  GP
+Sbjct  301  EERLAFLFPDEEERLKRRPEYDERLETELQVINQMGFPGYFLIVMEFIQWSKDNGVPVGP  360
+
+Query  339  GRGSAAGSLVAYALSITDVDPIEYGLLFERF  369
+            GRGS AGSLVAYAL ITD+DP+E+ LLFERF
+Sbjct  361  GRGSGAGSLVAYALKITDLDPLEFDLLFERF  391
+
+
+>5FKU_A cryo-EM structure of the E. coli replicative DNA polymerase complex 
+in DNA free state (DNA polymerase III alpha, beta, epsilon, 
+tau complex) [Escherichia coli K-12]
+ 5FKV_A cryo-EM structure of the E. coli replicative DNA polymerase complex 
+bound to DNA (DNA polymerase III alpha, beta, epsilon, 
+tau complex) [Escherichia coli K-12]
+ 5FKW_A cryo-EM structure of the E. coli replicative DNA polymerase complex 
+bound to DNA (DNA polymerase III alpha, beta, epsilon) 
+[Escherichia coli K-12]
+Length=1160
+
+ Score = 227 bits (579),  Expect = 5e-66, Method: Compositional matrix adjust.
+ Identities = 154/391 (39%), Positives = 210/391 (54%), Gaps = 29/391 (7%)
+
+Query  3    FVHLHVLSGYSLFQSTATVEALVAKAKQLGYRALALTDHQVLYGAIPFYRECQRHGLRPI  62
+            FVHL V S YS+    A    LV KA  LG  ALA+TD   L G + FY      G++PI
+Sbjct  6    FVHLRVHSDYSMIDGLAKTAPLVKKAAALGMPALAITDFTNLCGLVKFYGAGHGAGIKPI  65
+
+Query  63   IGMMADVVLD--GDSGAFPLVLLAANEEGYRHL-IEISTAVQMGEEKH---VHEAALRRL  116
+            +G   +V  D  GD     L +LAAN  GY++L + IS A Q G       +    L  L
+Sbjct  66   VGADFNVQCDLLGDELTH-LTVLAANNTGYQNLTLLISKAYQRGYGAAGPIIDRDWLIEL  124
+
+Query  117  SGGIIAITPGLNGRVESFLAAGEVAQAKETLLRYRQLFAGCLYIAIQR-GERTRAPYESA  175
+            + G+I ++ G  G V   L  G  A   E +  Y + F    ++ + R G      Y  A
+Sbjct  125  NEGLILLSGGRMGDVGRSLLRGNSALVDECVAFYEEHFPDRYFLELIRTGRPDEESYLHA  184
+
+Query  176  LLRLAEETGVPVVATNEVRYVEREDALAWRCLEAIGDGV-------PLAHIPEEDERYLA  228
+             + LAE  G+PVVATN+VR+++  D  A     AI DG        P  + P++   Y+ 
+Sbjct  185  AVELAEARGLPVVATNDVRFIDSSDFDAHEIRVAIHDGFTLDDPKRPRNYSPQQ---YMR  241
+
+Query  229  APDEMARRFADLPEALENSMNIANQCELHIEFGRWRLPKFPVPDGETADSYLRRLCEQGL  288
+            + +EM   FAD+PEAL N++ IA +C + +  G + LP+FP  D  T D YL +  ++GL
+Sbjct  242  SEEEMCELFADIPEALANTVEIAKRCNVTVRLGEYFLPQFPTGDMSTED-YLVKRAKEGL  300
+
+Query  289  ARRV----PSADAR------YRERLEHELHIIQTMRFSDYFLIVADVLAYARQRGILTGP  338
+              R+    P  + R      Y ERLE EL +I  M F  YFLIV + + +++  G+  GP
+Sbjct  301  EERLAFLFPDEEERLKRRPEYDERLETELQVINQMGFPGYFLIVMEFIQWSKDNGVPVGP  360
+
+Query  339  GRGSAAGSLVAYALSITDVDPIEYGLLFERF  369
+            GRGS AGSLVAYAL ITD+DP+E+ LLFERF
+Sbjct  361  GRGSGAGSLVAYALKITDLDPLEFDLLFERF  391
+
+
+>2HQA_A Crystal structure of the catalytic alpha subunit of E. Coli replicative 
+DNA polymerase III [Escherichia coli]
+Length=917
+
+ Score = 209 bits (533),  Expect = 3e-60, Method: Compositional matrix adjust.
+ Identities = 152/391 (39%), Positives = 206/391 (53%), Gaps = 29/391 (7%)
+
+Query  3    FVHLHVLSGYSLFQSTATVEALVAKAKQLGYRALALTDHQVLYGAIPFYRECQRHGLRPI  62
+            FVHL V S YS     A    LV KA  LG  ALA+TD   L G + FY      G++PI
+Sbjct  6    FVHLRVHSDYSXIDGLAKTAPLVKKAAALGXPALAITDFTNLCGLVKFYGAGHGAGIKPI  65
+
+Query  63   IGMMADVVLD--GDSGAFPLVLLAANEEGYRHL-IEISTAVQMGEEKH---VHEAALRRL  116
+            +G   +V  D  GD     L +LAAN  GY++L + IS A Q G       +    L  L
+Sbjct  66   VGADFNVQCDLLGDELTH-LTVLAANNTGYQNLTLLISKAYQRGYGAAGPIIDRDWLIEL  124
+
+Query  117  SGGIIAITPGLNGRVESFLAAGEVAQAKETLLRYRQLFAGCLYIA-IQRGERTRAPYESA  175
+            + G+I ++ G  G V   L  G  A   E +  Y + F    ++  I+ G      Y  A
+Sbjct  125  NEGLILLSGGRXGDVGRSLLRGNSALVDECVAFYEEHFPDRYFLELIRTGRPDEESYLHA  184
+
+Query  176  LLRLAEETGVPVVATNEVRYVEREDALAWRCLEAIGDGV-------PLAHIPEEDERYLA  228
+             + LAE  G+PVVATN+VR+++  D  A     AI DG        P  + P++   Y  
+Sbjct  185  AVELAEARGLPVVATNDVRFIDSSDFDAHEIRVAIHDGFTLDDPKRPRNYSPQQ---YXR  241
+
+Query  229  APDEMARRFADLPEALENSMNIANQCELHIEFGRWRLPKFPVPDGETADSYLRRLCEQGL  288
+            + +E    FAD+PEAL N++ IA +C + +  G + LP+FP  D  T D YL +  ++GL
+Sbjct  242  SEEEXCELFADIPEALANTVEIAKRCNVTVRLGEYFLPQFPTGDXSTED-YLVKRAKEGL  300
+
+Query  289  ARRV----PSADAR------YRERLEHELHIIQTMRFSDYFLIVADVLAYARQRGILTGP  338
+              R+    P  + R      Y ERLE EL +I    F  YFLIV + + +++  G+  GP
+Sbjct  301  EERLAFLFPDEEERLKRRPEYDERLETELQVINQXGFPGYFLIVXEFIQWSKDNGVPVGP  360
+
+Query  339  GRGSAAGSLVAYALSITDVDPIEYGLLFERF  369
+            GRGS AGSLVAYAL ITD+DP+E+ LLFERF
+Sbjct  361  GRGSGAGSLVAYALKITDLDPLEFDLLFERF  391
+
+
+>5LEW_A DNA polymerase [Mycobacterium tuberculosis H37Rv]
+Length=927
+
+ Score = 207 bits (528),  Expect = 1e-59, Method: Compositional matrix adjust.
+ Identities = 139/403 (34%), Positives = 214/403 (53%), Gaps = 35/403 (9%)
+
+Query  2    TFVHLHVLSGYSLFQSTATVEALVAKAKQLGYRALALTDHQVLYGAIPFYRECQRHGLRP  61
+            +FVHLH  + YS+    A +  ++A+ ++LG  A+ +TDH  ++GA  FY    + G++P
+Sbjct  3    SFVHLHNHTEYSMLDGAAKITPMLAEVERLGMPAVGMTDHGNMFGASEFYNSATKAGIKP  62
+
+Query  62   IIGMMADV----------VLDGD----------SGAFP-LVLLAANEEGYRHLIEISTAV  100
+            IIG+ A +          +L GD          SG++  L ++A N  G R+L ++S+  
+Sbjct  63   IIGVEAYIAPGSRFDTRRILWGDPSQKADDVSGSGSYTHLTMMAENATGLRNLFKLSSHA  122
+
+Query  101  ----QMGEEKHVHEAALRRLSGGIIAITPGLNGRVESFLAAGEVAQAKETLLRYRQLFAG  156
+                Q+ +   +    +   + GII  T   +G V++ L  G+  +A E   ++R++   
+Sbjct  123  SFEGQLSKWSRMDAELIAEHAEGIIITTGCPSGEVQTRLRLGQDREALEAAAKWREIVGP  182
+
+Query  157  CLYIA--IQRGERTRAPYESALLRLAEETGVPVVATNEVRYVEREDALAWRCLEAIGDGV  214
+              Y    +  G          LL +     +P +ATN+  YV R+ A     L  +  G 
+Sbjct  183  DNYFLELMDHGLTIERRVRDGLLEIGRALNIPPLATNDCHYVTRDAAHNHEALLCVQTGK  242
+
+Query  215  PLAHIP----EEDERYLAAPDEMARRFAD-LPEALENSMNIANQCELHIEFG--RWRLPK  267
+             L+       + D  YL +  EM + + D +P A ++++ IA + + + +    R R+P 
+Sbjct  243  TLSDPNRFKFDGDGYYLKSAAEMRQIWDDEVPGACDSTLLIAERVQSYADVWTPRDRMPV  302
+
+Query  268  FPVPDGETADSYLRRLCEQGLARRVPSADAR-YRERLEHELHIIQTMRFSDYFLIVADVL  326
+            FPVPDG    S+LR   + GL RR P+     YRER  +E+ +I +  F  YFLIVAD++
+Sbjct  303  FPVPDGHDQASWLRHEVDAGLRRRFPAGPPDGYRERAAYEIDVICSKGFPSYFLIVADLI  362
+
+Query  327  AYARQRGILTGPGRGSAAGSLVAYALSITDVDPIEYGLLFERF  369
+            +YAR  GI  GPGRGSAAGSLVAYAL ITD+DPI +GLLFERF
+Sbjct  363  SYARSAGIRVGPGRGSAAGSLVAYALGITDIDPIPHGLLFERF  405
+
+
+>2HPI_A Eubacterial and Eukaryotic Replicative DNA Polymerases are not 
+Homologous: X-ray Structure of DNA Polymerase III [Thermus 
+aquaticus]
+ 2HPM_A Eubacterial and Eukaryotic Replicative DNA Polymerases are not 
+Homologous: X-ray Structure of DNA Polymerase III [Thermus 
+aquaticus]
+ 4IQJ_A Structure of PolIIIalpha-Tauc-DNA complex suggests an atomic 
+model of the replisome [synthetic construct]
+ 4IQJ_B Structure of PolIIIalpha-Tauc-DNA complex suggests an atomic 
+model of the replisome [synthetic construct]
+ 4IQJ_C Structure of PolIIIalpha-Tauc-DNA complex suggests an atomic 
+model of the replisome [synthetic construct]
+ 4IQJ_D Structure of PolIIIalpha-Tauc-DNA complex suggests an atomic 
+model of the replisome [synthetic construct]
+Length=1220
+
+ Score = 196 bits (499),  Expect = 2e-55, Method: Compositional matrix adjust.
+ Identities = 148/453 (33%), Positives = 214/453 (47%), Gaps = 88/453 (19%)
+
+Query  1    MTFVHLHVLSGYSLFQSTATVEALVAKAKQLGYR--ALALTDHQVLYGAIPFYRECQRHG  58
+            + F HLH  + +SL    A ++ L+   K+      ALA+TDH  L+GA+ FY++    G
+Sbjct  5    LKFAHLHQHTQFSLLDGAAKLQDLLKWVKETTPEDPALAMTDHGNLFGAVEFYKKATAMG  64
+
+Query  59   LRPIIGMMADVVLDG----------DSGAFPLVLLAANEEGYRHLIEISTAVQMG---EE  105
+            ++PIIG  A V  +           D G F L LLA +  GY++L+ +++   +    E+
+Sbjct  65   VKPIIGYEAYVAAESRFDRKRGKGLDGGYFHLTLLAKDFTGYQNLVRLASRAYLEGFYEK  124
+
+Query  106  KHVHEAALRRLSGGIIAITPGLNGRVESFLAAGEVAQAKETLLRYRQLFAGCLYIAIQR-  164
+              +    LR  + G+IA++  L   +  F+    +  A+  L     +F    +I IQ  
+Sbjct  125  PRIDREILREHAQGLIALSGCLGAEIPQFILQDRLDLAEARLNEDLSIFGDRFFIEIQNH  184
+
+Query  165  GERTRAPYESALLRLAEETGVPVVATNEVRYVEREDALAWRCLEAIGDGVPLAHIPEE--  222
+            G   +      L   A + G+ +VATN+  YV +EDA A   L AI     L   PE   
+Sbjct  185  GLPEQKKVNQVLKEFARKYGLGMVATNDGHYVRKEDARAHEVLLAIQSKTTLDD-PERWR  243
+
+Query  223  ---DERYLAAPDEMARRFADLPEA------LENSMNIANQCELHIEFGR---WRLPKFPV  270
+               DE Y+  P+EM    A LPEA       +N++ IA  C++ +  G    +R+P+FP+
+Sbjct  244  FPCDEFYVKTPEEMR---AMLPEAEWGDEPFDNTVEIARMCDVDLPIGDKMVYRIPRFPL  300
+
+Query  271  PDGETADSYLRRLCEQGLARRVPS--ADARYRERLE------------------------  304
+            P+G T   YLR L   GL RR P    +A YRE L                         
+Sbjct  301  PEGRTEAQYLRELTFLGLLRRYPDRITEAFYREVLRLLGTMPPHGDERALAEALARVEEK  360
+
+Query  305  ----------------------------HELHIIQTMRFSDYFLIVADVLAYARQRGILT  336
+                                        +EL +I+ M F  YFLIV D + +AR  G+  
+Sbjct  361  AWEELRKRLPPLEGVREWTAEAILHRALYELSVIERMGFPGYFLIVQDYINWARGHGVSV  420
+
+Query  337  GPGRGSAAGSLVAYALSITDVDPIEYGLLFERF  369
+            GPGRGSAAGSLVAYA+ IT++DP+ +GLLFERF
+Sbjct  421  GPGRGSAAGSLVAYAVGITNIDPLRFGLLFERF  453
+
+
+>3E0D_A Insights into the Replisome from the Crystral Structure of the 
+Ternary Complex of the Eubacterial DNA Polymerase III alpha-subunit 
+[Thermus aquaticus]
+ 3E0D_B Insights into the Replisome from the Crystral Structure of the 
+Ternary Complex of the Eubacterial DNA Polymerase III alpha-subunit 
+[Thermus aquaticus]
+Length=1220
+
+ Score = 196 bits (498),  Expect = 3e-55, Method: Compositional matrix adjust.
+ Identities = 148/453 (33%), Positives = 213/453 (47%), Gaps = 88/453 (19%)
+
+Query  1    MTFVHLHVLSGYSLFQSTATVEALVAKAKQLGYR--ALALTDHQVLYGAIPFYRECQRHG  58
+            + F HLH  + +SL    A ++ L+   K+      ALA+TDH  L+GA+ FY++    G
+Sbjct  5    LKFAHLHQHTQFSLLNGAAKLQDLLKWVKETTPEDPALAMTDHGNLFGAVEFYKKATAMG  64
+
+Query  59   LRPIIGMMADVVLDG----------DSGAFPLVLLAANEEGYRHLIEISTAVQMG---EE  105
+            ++PIIG  A V  +           D G F L LLA +  GY++L+ +++   +    E+
+Sbjct  65   VKPIIGYEAYVAAESRFDRKRGKGLDGGYFHLTLLAKDFTGYQNLVRLASRAYLEGFYEK  124
+
+Query  106  KHVHEAALRRLSGGIIAITPGLNGRVESFLAAGEVAQAKETLLRYRQLFAGCLYIAIQR-  164
+              +    LR  + G+IA++  L   +  F+    +  A+  L     +F    +I IQ  
+Sbjct  125  PRIDREILREHAQGLIALSGCLGAEIPQFILQDRLDLAEARLNEDLSIFGDRFFIEIQNH  184
+
+Query  165  GERTRAPYESALLRLAEETGVPVVATNEVRYVEREDALAWRCLEAIGDGVPLAHIPEE--  222
+            G   +      L   A + G+ +VATN   YV +EDA A   L AI     L   PE   
+Sbjct  185  GLPEQKKVNQVLKEFARKYGLGMVATNNGHYVRKEDARAHEVLLAIQSKTTLDD-PERWR  243
+
+Query  223  ---DERYLAAPDEMARRFADLPEA------LENSMNIANQCELHIEFGR---WRLPKFPV  270
+               DE Y+  P+EM    A LPEA       +N++ IA  C++ +  G    +R+P+FP+
+Sbjct  244  FPCDEFYVKTPEEMR---AMLPEAEWGDEPFDNTVEIARMCDVDLPIGDKMVYRIPRFPL  300
+
+Query  271  PDGETADSYLRRLCEQGLARRVPS--ADARYRERLE------------------------  304
+            P+G T   YLR L   GL RR P    +A YRE L                         
+Sbjct  301  PEGRTEAQYLRELTFLGLLRRYPDRITEAFYREVLRLLGTMPPHGDERALAEALARVEEK  360
+
+Query  305  ----------------------------HELHIIQTMRFSDYFLIVADVLAYARQRGILT  336
+                                        +EL +I+ M F  YFLIV D + +AR  G+  
+Sbjct  361  AWEELRKRLPPLEGVREWTAEAILHRALYELSVIERMGFPGYFLIVQDYINWARGHGVSV  420
+
+Query  337  GPGRGSAAGSLVAYALSITDVDPIEYGLLFERF  369
+            GPGRGSAAGSLVAYA+ IT++DP+ +GLLFERF
+Sbjct  421  GPGRGSAAGSLVAYAVGITNIDPLRFGLLFERF  453
+
+
+>4GX9_A Crystal structure of a DNA polymerase III alpha-epsilon chimera 
+[Escherichia coli K-12]
+ 4GX9_B Crystal structure of a DNA polymerase III alpha-epsilon chimera 
+[Escherichia coli K-12]
+ 4GX9_C Crystal structure of a DNA polymerase III alpha-epsilon chimera 
+[Escherichia coli K-12]
+ 4GX9_D Crystal structure of a DNA polymerase III alpha-epsilon chimera 
+[Escherichia coli K-12]
+Length=324
+
+ Score = 123 bits (308),  Expect = 1e-31, Method: Compositional matrix adjust.
+ Identities = 96/268 (36%), Positives = 134/268 (50%), Gaps = 18/268 (7%)
+
+Query  3    FVHLHVLSGYSLFQSTATVEALVAKAKQLGYRALALTDHQVLYGAIPFYRECQRHGLRPI  62
+            FVHL V S YS+    A    LV KA  LG  ALA+TD   L G + FY      G++PI
+Sbjct  60   FVHLRVHSDYSMIDGPAKTAPLVKKAAALGMPALAITDFTNLCGLVKFYGAGHGAGIKPI  119
+
+Query  63   IGMMADVVLD--GDSGAFPLVLLAANEEGYRHL-IEISTAVQMGEEKH---VHEAALRRL  116
+            +G   +V  D  GD     L +LAAN  GY++L + IS A Q G       +    L  L
+Sbjct  120  VGADFNVQCDLLGDELTH-LTVLAANNTGYQNLTLLISKAYQRGYGAAGPIIDRDWLIEL  178
+
+Query  117  SGGIIAITPGLNGRVESFLAAGEVAQAKETLLRYRQLFAGCLYIA-IQRGERTRAPYESA  175
+            + G+I ++ G  G V   L  G  A   E +  Y + F    ++  I+ G      Y  A
+Sbjct  179  NEGLILLSGGRMGDVGRSLLRGNSALVDECVAFYEEHFPDRYFLELIRTGRPDEESYLHA  238
+
+Query  176  LLRLAEETGVPVVATNEVRYVEREDALAWRCLEAIGDGV-------PLAHIPEEDERYLA  228
+             + LAE  G+PVVATN+VR+++  D  A     AI DG        P  + P++   Y+ 
+Sbjct  239  AVELAEARGLPVVATNDVRFIDSSDFDAHEIRVAIHDGFTLDDPKRPRNYSPQQ---YMR  295
+
+Query  229  APDEMARRFADLPEALENSMNIANQCEL  256
+            + +EM   FAD+PEAL N++ IA +C +
+Sbjct  296  SEEEMCELFADIPEALANTVEIAKRCNV  323
+
+
+>4GX8_A Crystal structure of a DNA polymerase III alpha-epsilon chimera 
+[Escherichia coli K-12]
+ 4GX8_B Crystal structure of a DNA polymerase III alpha-epsilon chimera 
+[Escherichia coli K-12]
+ 4GX8_C Crystal structure of a DNA polymerase III alpha-epsilon chimera 
+[Escherichia coli K-12]
+ 4GX8_D Crystal structure of a DNA polymerase III alpha-epsilon chimera 
+[Escherichia coli K-12]
+Length=315
+
+ Score = 122 bits (307),  Expect = 1e-31, Method: Compositional matrix adjust.
+ Identities = 96/268 (36%), Positives = 134/268 (50%), Gaps = 18/268 (7%)
+
+Query  3    FVHLHVLSGYSLFQSTATVEALVAKAKQLGYRALALTDHQVLYGAIPFYRECQRHGLRPI  62
+            FVHL V S YS+    A    LV KA  LG  ALA+TD   L G + FY      G++PI
+Sbjct  51   FVHLRVHSDYSMIDGPAKTAPLVKKAAALGMPALAITDFTNLCGLVKFYGAGHGAGIKPI  110
+
+Query  63   IGMMADVVLD--GDSGAFPLVLLAANEEGYRHL-IEISTAVQMGEEKH---VHEAALRRL  116
+            +G   +V  D  GD     L +LAAN  GY++L + IS A Q G       +    L  L
+Sbjct  111  VGADFNVQCDLLGDELTH-LTVLAANNTGYQNLTLLISKAYQRGYGAAGPIIDRDWLIEL  169
+
+Query  117  SGGIIAITPGLNGRVESFLAAGEVAQAKETLLRYRQLFAGCLYIA-IQRGERTRAPYESA  175
+            + G+I ++ G  G V   L  G  A   E +  Y + F    ++  I+ G      Y  A
+Sbjct  170  NEGLILLSGGRMGDVGRSLLRGNSALVDECVAFYEEHFPDRYFLELIRTGRPDEESYLHA  229
+
+Query  176  LLRLAEETGVPVVATNEVRYVEREDALAWRCLEAIGDGV-------PLAHIPEEDERYLA  228
+             + LAE  G+PVVATN+VR+++  D  A     AI DG        P  + P++   Y+ 
+Sbjct  230  AVELAEARGLPVVATNDVRFIDSSDFDAHEIRVAIHDGFTLDDPKRPRNYSPQQ---YMR  286
+
+Query  229  APDEMARRFADLPEALENSMNIANQCEL  256
+            + +EM   FAD+PEAL N++ IA +C +
+Sbjct  287  SEEEMCELFADIPEALANTVEIAKRCNV  314
+
+
+>3F2B_A DNA Polymerase PolC from Geobacillus kaustophilus complex with 
+DNA, dGTP, Mg and Zn [Geobacillus kaustophilus]
+ 3F2C_A DNA Polymerase PolC from Geobacillus kaustophilus complex with 
+DNA, dGTP and Mn [Geobacillus kaustophilus]
+ 3F2D_A DNA Polymerase PolC from Geobacillus kaustophilus complex with 
+DNA, dGTP, Mn and Zn [Geobacillus kaustophilus]
+Length=1041
+
+ Score = 84.0 bits (206),  Expect = 6e-17, Method: Compositional matrix adjust.
+ Identities = 97/392 (25%), Positives = 167/392 (43%), Gaps = 44/392 (11%)
+
+Query  4    VHLHVLSGYSLFQSTATVEALVAKAKQLGYRALALTDHQVLYGAIPFYRECQRHGLRPII  63
+            V LH+ +  S   +  +V  L+ +AK+ G+ A+A+TDH V+      Y   ++HG++ I 
+Sbjct  117  VELHLHTPMSQMDAVTSVTKLIEQAKKWGHPAIAVTDHAVVQSFPEAYSAAKKHGMKVIY  176
+
+Query  64   GMMADVVLDG--------------DSGAFPLVLLAANEEGYRHLIEISTAVQMGEEKHVH  109
+            G+ A++V DG               SG F + LLA NE G ++L ++   V +   ++ H
+Sbjct  177  GLEANIVDDGVPIAYNETHRRLGSGSGPFHVTLLAQNETGLKNLFKL---VSLSHIQYFH  233
+
+Query  110  ------EAALRRLSGGIIAITPGLNGRVESFLAAGEVAQAKETLLRYR--------QLFA  155
+                   + L +   G++  +    G +   L   +  +  E + R+          ++ 
+Sbjct  234  RVPRIPRSVLVKHRDGLLVGSGCDKGELFDNLIQ-KAPEEVEDIARFYDFLEVHPPDVYK  292
+
+Query  156  GCLYIAIQRGERTRAPYESALLRLAEETGVPVVATNEVRYVEREDALAWRCL-EAIGDGV  214
+              + +   + E        +++ L E+  +PVVAT  V Y+  ED +  + L  + G   
+Sbjct  293  PLIEMDYVKDEEMIKNIIRSIVALGEKLDIPVVATGNVHYLNPEDKIYRKILIHSQGGAN  352
+
+Query  215  PLAHIPEEDERYLAAPDEMARRFADLPEALENSMNIANQCELHIEFGRWRLPK--FPVPD  272
+            PL    E  + Y    +EM   F+ L       + + N  ++    G  +  K     P 
+Sbjct  353  PLNR-HELPDVYFRTTNEMLDCFSFLGPEKAKEIVVDNTQKIASLIGDVKPIKDELYTPR  411
+
+Query  273  GETADSYLR----RLCEQGLARRVPSADARYRERLEHELHIIQTMRFSDYFLIVADVLAY  328
+             E AD  +R    R  ++     +P       ERLE EL  I    F+  +LI   ++  
+Sbjct  412  IEGADEEIREMSYRRAKEIYGDPLPKL---VEERLEKELKSIIGHGFAVIYLISHKLVKK  468
+
+Query  329  ARQRGILTGPGRGSAAGSLVAYALSITDVDPI  360
+            +   G L G  RGS   S VA    IT+V+P+
+Sbjct  469  SLDDGYLVG-SRGSVGSSFVATMTEITEVNPL  499
+
+
+>7LS6_H Chain H, Proteasome maturation factor UMP1 [Saccharomyces cerevisiae 
+S288C]
+ 7LSX_H Chain H, Proteasome maturation factor UMP1 [Saccharomyces cerevisiae 
+S288C]
+Length=148
+
+ Score = 32.0 bits (71),  Expect = 0.69, Method: Compositional matrix adjust.
+ Identities = 16/46 (35%), Positives = 25/46 (54%), Gaps = 2/46 (4%)
+
+Query  112  ALRRLSGGIIAITPGLNGR--VESFLAAGEVAQAKETLLRYRQLFA  155
+             LR+  GG + ++  LN R  +ES L   E  Q +  + +YRQ+F 
+Sbjct  32   TLRQQEGGAVPLSTQLNDRHPLESTLKNWETTQRQRQMEQYRQIFG  77
+
+
+>7A7D_A Cadherin fit into cryo-ET map [Homo sapiens]
+ 7A7D_B Cadherin fit into cryo-ET map [Homo sapiens]
+ 7A7D_C Cadherin fit into cryo-ET map [Homo sapiens]
+ 7A7D_D Cadherin fit into cryo-ET map [Homo sapiens]
+ 7A7D_E Cadherin fit into cryo-ET map [Homo sapiens]
+ 7A7D_F Cadherin fit into cryo-ET map [Homo sapiens]
+ 7A7D_G Cadherin fit into cryo-ET map [Homo sapiens]
+Length=554
+
+ Score = 32.7 bits (73),  Expect = 1.1, Method: Compositional matrix adjust.
+ Identities = 16/47 (34%), Positives = 28/47 (60%), Gaps = 4/47 (9%)
+
+Query  181  EETGVPVVATNEVRYVEREDALAWRCLEAIGDGVPLAHIPEEDERYL  227
+            E+TG+P  A    RYV+ ED   W  ++++   + LA +P+ + RY+
+Sbjct  369  EDTGLPAHA----RYVKLEDRDNWISVDSVTSEIKLAKLPDFESRYV  411
+
+
+>5ERD_A Crystal structure of human Desmoglein-2 ectodomain [Homo sapiens]
+ 5ERD_B Crystal structure of human Desmoglein-2 ectodomain [Homo sapiens]
+Length=559
+
+ Score = 32.7 bits (73),  Expect = 1.1, Method: Compositional matrix adjust.
+ Identities = 16/47 (34%), Positives = 28/47 (60%), Gaps = 4/47 (9%)
+
+Query  181  EETGVPVVATNEVRYVEREDALAWRCLEAIGDGVPLAHIPEEDERYL  227
+            E+TG+P  A    RYV+ ED   W  ++++   + LA +P+ + RY+
+Sbjct  369  EDTGLPAHA----RYVKLEDRDNWISVDSVTSEIKLAKLPDFESRYV  411
+
+
+>5J5J_A Crystal structure of a chimera of human Desmocollin-2 EC1 and 
+human Desmoglein-2 EC2-EC5 [Homo sapiens]
+Length=557
+
+ Score = 32.3 bits (72),  Expect = 1.2, Method: Compositional matrix adjust.
+ Identities = 16/47 (34%), Positives = 28/47 (60%), Gaps = 4/47 (9%)
+
+Query  181  EETGVPVVATNEVRYVEREDALAWRCLEAIGDGVPLAHIPEEDERYL  227
+            E+TG+P  A    RYV+ ED   W  ++++   + LA +P+ + RY+
+Sbjct  367  EDTGLPAHA----RYVKLEDRDNWISVDSVTSEIKLAKLPDFESRYV  409
+
+
+>6Q4S_A Crystal structure of a-eudesmol synthase [Streptomyces chartreusis 
+NRRL 3882]
+Length=343
+
+ Score = 32.0 bits (71),  Expect = 1.5, Method: Compositional matrix adjust.
+ Identities = 25/69 (36%), Positives = 33/69 (48%), Gaps = 8/69 (12%)
+
+Query  85   ANEEGYRHLI-------EISTAV-QMGEEKHVHEAALRRLSGGIIAITPGLNGRVESFLA  136
+            A +E YR  I       E+   V QM +E  + EA   R+  G+ AI   +NG  E  L 
+Sbjct  255  ATDEAYRMTIACLDEYLELQERVPQMCDELRLDEAERDRVRMGVEAIQHWINGNYEWALT  314
+
+Query  137  AGEVAQAKE  145
+            +G  A AKE
+Sbjct  315  SGRYAAAKE  323
+
+
+>3B0Y_A K263D mutant of PolX from Thermus thermophilus HB8 complexed 
+with Ca-dGTP [Thermus thermophilus HB8]
+Length=575
+
+ Score = 32.0 bits (71),  Expect = 1.7, Method: Compositional matrix adjust.
+ Identities = 19/36 (53%), Positives = 23/36 (64%), Gaps = 2/36 (6%)
+
+Query  6    LHVLSGYSLFQSTATVEALVAKAKQLGYRALALTDH  41
+            L V S YS  Q+T  +E L   AK +GYR LA+TDH
+Sbjct  341  LQVHSTYSDGQNT--LEELWEAAKTMGYRYLAVTDH  374
+
+
+>3B0X_A K263A mutant of PolX from Thermus thermophilus HB8 complexed 
+with Ca-dGTP [Thermus thermophilus HB8]
+Length=575
+
+ Score = 32.0 bits (71),  Expect = 1.8, Method: Compositional matrix adjust.
+ Identities = 19/36 (53%), Positives = 23/36 (64%), Gaps = 2/36 (6%)
+
+Query  6    LHVLSGYSLFQSTATVEALVAKAKQLGYRALALTDH  41
+            L V S YS  Q+T  +E L   AK +GYR LA+TDH
+Sbjct  341  LQVHSTYSDGQNT--LEELWEAAKTMGYRYLAVTDH  374
+
+
+>3AU2_A DNA polymerase X from Thermus thermophilus HB8 complexed with 
+Ca-dGTP [Thermus thermophilus HB8]
+ 3AU6_A DNA polymerase X from Thermus thermophilus HB8 ternary complex 
+with primer/template DNA and ddGTP [Thermus thermophilus HB8]
+ 3AUO_A DNA polymerase X from Thermus thermophilus HB8 ternary complex 
+with 1-nt gapped DNA and ddGTP [Thermus thermophilus HB8]
+ 3AUO_B DNA polymerase X from Thermus thermophilus HB8 ternary complex 
+with 1-nt gapped DNA and ddGTP [Thermus thermophilus HB8]
+Length=575
+
+ Score = 32.0 bits (71),  Expect = 1.8, Method: Compositional matrix adjust.
+ Identities = 19/36 (53%), Positives = 23/36 (64%), Gaps = 2/36 (6%)
+
+Query  6    LHVLSGYSLFQSTATVEALVAKAKQLGYRALALTDH  41
+            L V S YS  Q+T  +E L   AK +GYR LA+TDH
+Sbjct  341  LQVHSTYSDGQNT--LEELWEAAKTMGYRYLAVTDH  374
+
+
+>5GIR_B Crystal structure of a Fab fragment with its ligand peptide [Mus 
+musculus]
+ 5GIR_L Crystal structure of a Fab fragment with its ligand peptide [Mus 
+musculus]
+ 5GIS_L Crystal structure of a Fab fragment with its ligand peptide [Mus 
+musculus]
+Length=234
+
+ Score = 29.3 bits (64),  Expect = 9.3, Method: Compositional matrix adjust.
+ Identities = 21/73 (29%), Positives = 32/73 (44%), Gaps = 5/73 (7%)
+
+Query  294  SADARYRERLEHELHIIQTMRFSDYFLIVADVLAYARQRGILTGPGRGSAAGSLVAYALS  353
+            S   R  +R+ + LH  Q        L++     Y  Q  I   P R S +GS   + LS
+Sbjct  40   SLSCRASQRISNNLHWYQQKSHESPRLLIR----YTSQ-SISGIPSRFSGSGSGTDFTLS  94
+
+Query  354  ITDVDPIEYGLLF  366
+            I  V+  ++G+ F
+Sbjct  95   INSVETEDFGMYF  107
+
+
+
+Lambda      K        H        a         alpha
+   0.323    0.139    0.407    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 5515455056
+
+
+  Database: PDB protein database
+    Posted date:  Aug 8, 2021  4:26 AM
+  Number of letters in database: 34,844,698
+  Number of sequences in database:  130,881
+
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Neighboring words threshold: 11
+Window for multiple hits: 40

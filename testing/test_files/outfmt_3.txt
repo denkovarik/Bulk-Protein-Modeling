@@ -1,0 +1,220 @@
+PSIBLAST 2.12.0+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+Reference for compositional score matrix adjustment: Stephen F.
+Altschul, John C. Wootton, E. Michael Gertz, Richa Agarwala,
+Aleksandr Morgulis, Alejandro A. Schaffer, and Yi-Kuo Yu (2005)
+"Protein database searches using compositionally adjusted
+substitution matrices", FEBS J. 272:5101-5109.
+
+
+Reference for composition-based statistics starting in round 2:
+Alejandro A. Schaffer, L. Aravind, Thomas L. Madden, Sergei
+Shavirin, John L. Spouge, Yuri I. Wolf, Eugene V. Koonin, and
+Stephen F. Altschul (2001), "Improving the accuracy of PSI-BLAST
+protein database searches with composition-based statistics and
+other refinements", Nucleic Acids Res. 29:2994-3005.
+
+
+
+Database: PDB protein database
+           130,881 sequences; 34,844,698 total letters
+
+Results from round 1
+
+
+Query= test_1
+
+Length=369
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+4JOM_A Structure of E. coli Pol III 3mPHP mutant [Escherichia col...  231     4e-68
+2HNH_A Crystal structure of the catalytic alpha subunit of E. col...  227     1e-66
+5M1S_A Cryo-EM structure of the E. coli replicative DNA polymeras...  227     1e-66
+5FKU_A cryo-EM structure of the E. coli replicative DNA polymeras...  227     5e-66
+2HQA_A Crystal structure of the catalytic alpha subunit of E. Col...  209     3e-60
+5LEW_A DNA polymerase [Mycobacterium tuberculosis H37Rv]              207     1e-59
+2HPI_A Eubacterial and Eukaryotic Replicative DNA Polymerases are...  196     2e-55
+3E0D_A Insights into the Replisome from the Crystral Structure of...  196     3e-55
+4GX9_A Crystal structure of a DNA polymerase III alpha-epsilon ch...  123     1e-31
+4GX8_A Crystal structure of a DNA polymerase III alpha-epsilon ch...  122     1e-31
+3F2B_A DNA Polymerase PolC from Geobacillus kaustophilus complex ...  84.0    6e-17
+7LS6_H Chain H, Proteasome maturation factor UMP1 [Saccharomyces ...  32.0    0.69 
+7A7D_A Cadherin fit into cryo-ET map [Homo sapiens]                   32.7    1.1  
+5ERD_A Crystal structure of human Desmoglein-2 ectodomain [Homo s...  32.7    1.1  
+5J5J_A Crystal structure of a chimera of human Desmocollin-2 EC1 ...  32.3    1.2  
+6Q4S_A Crystal structure of a-eudesmol synthase [Streptomyces cha...  32.0    1.5  
+3B0Y_A K263D mutant of PolX from Thermus thermophilus HB8 complex...  32.0    1.7  
+3B0X_A K263A mutant of PolX from Thermus thermophilus HB8 complex...  32.0    1.8  
+3AU2_A DNA polymerase X from Thermus thermophilus HB8 complexed w...  32.0    1.8  
+5GIR_B Crystal structure of a Fab fragment with its ligand peptid...  29.3    9.3  
+
+
+
+Query_1  1    MTFVHLHVLSGYSLFQSTATVEALVAKAKQLGYR--ALALTDHQVLYGAIPFYRECQRHG  58
+4JOM_A   7      ......H.D..MIDGL.KTAP..K..AA..MP--...I...TN.C.LVK..GAGHGA.  62
+2HNH_A   6      ....R.H.D..MIDGL.KTAP..K..AA..MP--...I..FTN.C.LVK..GAGHGA.  61
+5M1S_A   6      ....R.H.D..MIDGL.KTAP..K..AA..MP--...I..FTN.C.LVK..GAGHGA.  61
+5FKU_A   6      ....R.H.D..MIDGL.KTAP..K..AA..MP--...I..FTN.C.LVK..GAGHGA.  61
+2HQA_A   6      ....R.H.D..XIDGL.KTAP..K..AA..XP--...I..FTN.C.LVK..GAGHGA.  61
+5LEW_A   3     S.....NHTE..MLDGA.KITPML.EVER..MP--.VGM...GNMF..SE..NSATKA.  59
+2HPI_A   5    LK.A...QHTQF..LDGA.KLQD.LKWV.ETTPEDP...M...GN.F..VE..KKATAM.  64
+3E0D_A   5    LK.A...QHTQF..LNGA.KLQD.LKWV.ETTPEDP...M...GN.F..VE..KKATAM.  64
+4GX9_A   60     ....R.H.D..MIDGP.KTAP..K..AA..MP--...I..FTN.C.LVK..GAGHGA.  115
+4GX8_A   51     ....R.H.D..MIDGP.KTAP..K..AA..MP--...I..FTN.C.LVK..GAGHGA.  106
+3F2B_A   117     .E..LHTPM.QMDAVTS.TK.IEQ..KW.HP--.I.V...A.VQSFPEA.SAAKK..  171
+3B0Y_A   341       .Q.H.T..DG.N.--L.E.WEA..TM...--Y..V...                   374
+3B0X_A   341       .Q.H.T..DG.N.--L.E.WEA..TM...--Y..V...                   374
+3AU2_A   341       .Q.H.T..DG.N.--L.E.WEA..TM...--Y..V...                   374
+
+Query_1  59   LRPIIGMMADV----------VLD--G--------------D----------SGAFP-LV  81
+4JOM_A   63   IK..V.ADFN.----------QC.LL.--------------.----------ELTH--.T  86
+2HNH_A   62   IK..V.ADFN.----------QC.LL.--------------.----------ELTH--.T  85
+5M1S_A   62   IK..V.ADFN.----------QC.LL.--------------.----------ELTH--.T  85
+5FKU_A   62   IK..V.ADFN.----------QC.LL.--------------.----------ELTH--.T  85
+2HQA_A   62   IK..V.ADFN.----------QC.LL.--------------.----------ELTH--.T  85
+5LEW_A   60   IK....VE.YIAPGSRFDTRRI.W--.--------------.PSQKADDVSG..SYTH.T  103
+2HPI_A   65   VK....YE.Y.----------AAE--SRFDRKRGKGL----.----------G.Y.H-.T  97
+3E0D_A   65   VK....YE.Y.----------AAE--SRFDRKRGKGL----.----------G.Y.H-.T  97
+4GX9_A   116  IK..V.ADFN.----------QC.LL.--------------.----------ELTH--.T  139
+4GX8_A   107  IK..V.ADFN.----------QC.LL.--------------.----------ELTH--.T  130
+3F2B_A   172  MKV.Y.LE.NI----------.D.--.VPIAYNETHRRLGSG----------..P.H-VT  208
+
+Query_1  82   LLAANEEGYRHL-I-------EISTAV----QMG---EEKH---VH------EAALRRLS  117
+4JOM_A   87   V....NT..QN.TL-------L..K.Y----.R.---YGAAGPIID------RDW.IE.N  126
+2HNH_A   86   V....NT..QN.TL-------L..K.Y----.R.---YGAAGPIID------RDW.IE.N  125
+5M1S_A   86   V....NT..QN.TL-------L..K.Y----.R.---YGAAGPIID------RDW.IE.N  125
+5FKU_A   86   V....NT..QN.TL-------L..K.Y----.R.---YGAAGPIID------RDW.IE.N  125
+2HQA_A   86   V....NT..QN.TL-------L..K.Y----.R.---YGAAGPIID------RDW.IE.N  125
+5LEW_A   104  MM.E.AT.L.N.-F-------KL.SHASFEG.LS---KWSR---MD------AELIAEHA  143
+2HPI_A   98   ...KDFT..QN.-V-------RLASRA----YLEGFY.KPR---ID------REI..EHA  136
+3E0D_A   98   ...KDFT..QN.-V-------RLASRA----YLEGFY.KPR---ID------REI..EHA  136
+4GX9_A   140  V....NT..QN.TL-------L..K.Y----.R.---YGAAGPIID------RDW.IE.N  179
+4GX8_A   131  V....NT..QN.TL-------L..K.Y----.R.---YGAAGPIID------RDW.IE.N  170
+3F2B_A   209  ...Q..T.LKN.-F-------KL---.----SLS---HIQY---F.RVPRIPRSV.VKHR  247
+7LS6_H   32                                                         T..QQE  37
+6Q4S_A   255     .TD.A..MT-.ACLDEYL.LQER.P---..C---D.LR---LD------..ERD.VR  295
+
+Query_1  118  GGIIAITPGLNGR--VESFLAAGEVAQAKETLLRYR--------QLFAGCLYIA--IQR-  164
+4JOM_A   127  E.L.LLSG.RM.D--.GRS.LR.NS.LVD.CVAF.E--------EH.PDRYFLE--LI.T  174
+2HNH_A   126  E.L.LLSG.RM.D--.GRS.LR.NS.LVD.CVAF.E--------EH.PDRYFLE--LI.T  173
+5M1S_A   126  E.L.LLSG.RM.D--.GRS.LR.NS.LVD.CVAF.E--------EH.PDRYFLE--LI.T  173
+5FKU_A   126  E.L.LLSG.RM.D--.GRS.LR.NS.LVD.CVAF.E--------EH.PDRYFLE--LI.T  173
+2HQA_A   126  E.L.LLSG.RX.D--.GRS.LR.NS.LVD.CVAF.E--------EH.PDRYFLEL-.RT-  173
+5LEW_A   144  E...IT.GCPS.E--.QTR.RL.QDRE.L.AAAKW.--------EIVGPDN.FLELMDH-  192
+2HPI_A   137  Q.L..LSGC.GAE--IPQ.ILQDRLDL.EAR.NEDL--------SI.GDRFF.E--..NH  184
+3E0D_A   137  Q.L..LSGC.GAE--IPQ.ILQDRLDL.EAR.NEDL--------SI.GDRFF.E--..NH  184
+4GX9_A   180  E.L.LLSG.RM.D--.GRS.LR.NS.LVD.CVAF.E--------EH.PDRYFLEL-.RT-  227
+4GX8_A   171  E.L.LLSG.RM.D--.GRS.LR.NS.LVD.CVAF.E--------EH.PDRYFLEL-.RT-  218
+3F2B_A   248  D.LLVGSGCDK.E--LFDN.IQ-KAPEEV.DIA.FYDFLEVHPPDVYKPLIEMD--YVK-  301
+7LS6_H   38   ..AVPLSTQ..D.HPL..T.KNW.TT.RQRQMEQ..--------.I.G              77
+6Q4S_A   296  M.VE..QHWI..N--Y.WA.TS.RY.A...                                323
+
+Query_1  165  GERTRAPYESALLRLAEETGVPVVATNEVRYVEREDALAWRCL-EAIGDGV-------PL  216
+4JOM_A   175  .RPDEES.LH.AVE...AR.L......D.HFIDSS.FD.HEIR-V..H..FTLDDPKR.R  233
+2HNH_A   174  .RPDEES.LH.AVE...AR.L......D..FIDSS.FD.HEIR-V..H..FTLDDPKR.R  232
+5M1S_A   174  .RPDEES.LH.AVE...AR.L......D..FIDSS.FD.HEIR-V..H..FTLDDPKR.R  232
+5FKU_A   174  .RPDEES.LH.AVE...AR.L......D..FIDSS.FD.HEIR-V..H..FTLDDPKR.R  232
+2HQA_A   174  .RPDEES.LH.AVE...AR.L......D..FIDSS.FD.HEIR-V..H..FTLDDPKR.R  232
+5LEW_A   193  .LTIERRVRDG..EIGRALNI.PL...DCH..T.DA.HNHEA.-LCVQT.K-------T.  244
+2HPI_A   185  .LPEQKKVNQV.KEF.RKY.LGM....DGH..RK...R.HEV.-L..QSKT-------T.  236
+3E0D_A   185  .LPEQKKVNQV.KEF.RKY.LGM....NGH..RK...R.HEV.-L..QSKT-------T.  236
+4GX9_A   228  .RPDEES.LH.AVE...AR.L......D..FIDSS.FD.HEIR-V..H..FTLDDPKR.R  286
+4GX8_A   219  .RPDEES.LH.AVE...AR.L......D..FIDSS.FD.HEIR-V..H..FTLDDPKR.R  277
+3F2B_A   302  D.EMIKNIIRSIVA.G.KLDI.....GN.H.LNP..KIYRKI.IHSQ.GAN-------..  354
+7A7D_A   369                  .D..L.AH.----...KL..RDN.ISV-DSVTSEI-------K.  400
+5ERD_A   369                  .D..L.AH.----...KL..RDN.ISV-DSVTSEI-------K.  400
+5J5J_A   367                  .D..L.AH.----...KL..RDN.ISV-DSVTSEI-------K.  398
+
+Query_1  217  AHIP----EE-----DERYLAAPDEMARRFAD-LPEA------LENSMNIANQCELHIEF  260
+4JOM_A   234  NYS.----QQ--------.MRSEE..CEL...-I...------.A.TVE..KR.NVTVRL  274
+2HNH_A   233  NYS.----QQ--------.MRSEE..CEL...-I...------.A.TVE..KR.NVTVRL  273
+5M1S_A   233  NYS.----QQ--------.MRSEE..CEL...-I...------.A.TVE..KR.NVTVRL  273
+5FKU_A   233  NYS.----QQ--------.MRSEE..CEL...-I...------.A.TVE..KR.NVTVRL  273
+2HQA_A   233  NYS.----QQ--------.XRSEE.XCEL...-I...------.A.TVE..KR.NVTVRL  273
+5LEW_A   245  SDPNRFKFDG-----.GY..KSAA..RQIWD.EV.G.------CDSTLL..ERVQSYADV  293
+2HPI_A   237  DD-.----.RWRFPC..F.VKT.E..R---.M-....EWGDEPFD.TVE..RM.DVDLPI  287
+3E0D_A   237  DD-.----.RWRFPC..F.VKT.E..R---.M-....EWGDEPFD.TVE..RM.DVDLPI  287
+4GX9_A   287  NYS.----QQ--------.MRSEE..CEL...-I...------.A.TVE..KR.NV      323
+4GX8_A   278  NYS.----QQ--------.MRSEE..CEL...-I...------.A.TVE..KR.NV      314
+3F2B_A   355  NR-H----.L-----PDV.FRTTN..LDC.SF-.GPE------KAKEIVVD.TQKIASLI  397
+7A7D_A   401  .KL.----DF-----ES..V                                          411
+5ERD_A   401  .KL.----DF-----ES..V                                          411
+5J5J_A   399  .KL.----DF-----ES..V                                          409
+
+Query_1  261  G--R---WRLPK--FPVPDGETADSYLR----RLCEQGLARRV----PS--ADAR-----  298
+4JOM_A   275  .--E---YF..Q--..TG.MS.E.-..V----KRAKE..EE.LAFLF.D--EEE.LKRRP  320
+2HNH_A   274  .--E---YF..Q--..TG.MS.E.-..V----KRAKE..EE.LAFLF.D--EEE.LKRRP  319
+5M1S_A   274  .--E---YF..Q--..TG.MS.E.-..V----KRAKE..EE.LAFLF.D--EEE.LKRRP  319
+5FKU_A   274  .--E---YF..Q--..TG.MS.E.-..V----KRAKE..EE.LAFLF.D--EEE.LKRRP  319
+2HQA_A   274  .--E---YF..Q--..TG.XS.E.-..V----KRAKE..EE.LAFLF.D--EEE.LKRRP  319
+5LEW_A   294  WTP.---D.M.V--......HDQA.W..----HEVDA..R..F----.A--GPPDG----  334
+2HPI_A   288  .--DKMVY.I.R--..L.E.R.EAQ...----E.TFL..L..Y----.DRITE.F-----  330
+3E0D_A   288  .--DKMVY.I.R--..L.E.R.EAQ...----E.TFL..L..Y----.DRITE.F-----  330
+3F2B_A   398  .--D---VKPI.DELYT.RI.G..EEI.EMSY.RAKEIYGDPL----.K--L--------  438
+5GIR_B   40                                                   .--LSC.-----  44
+
+Query_1  299  -YRERLE----------------------------------------------------H  305
+4JOM_A   321  E.D....----------------------------------------------------T  328
+2HNH_A   320  E.D....----------------------------------------------------T  327
+5M1S_A   320  E.D....----------------------------------------------------T  327
+5FKU_A   320  E.D....----------------------------------------------------T  327
+2HQA_A   320  E.D....----------------------------------------------------T  327
+5LEW_A   335  -....AA----------------------------------------------------Y  341
+2HPI_A   331  -...V.RLLGTMPPHGDERALAEALARVEEKAWEELRKRLPPLEGVREWTAEAILHRALY  389
+3E0D_A   331  -...V.RLLGTMPPHGDERALAEALARVEEKAWEELRKRLPPLEGVREWTAEAILHRALY  389
+3F2B_A   439  -VE....----------------------------------------------------K  445
+5GIR_B   45   -ASQ.IS----------------------------------------------------N  51
+
+Query_1  306  ELHIIQTMRFSDYFLIVADVLAYARQRGILTGPGRGSAAGSLVAYALSITDVDPIEYGLL  365
+4JOM_A   329  ..QV.NQ.G.PG.....MEFIQWSKDN.VPV......G.........K...L..L.FD..  388
+2HNH_A   328  ..QV.NQ.G.PG.....MEFIQWSKDN.VPV......G.........K...L..L.FD..  387
+5M1S_A   328  ..QV.NQ.G.PG.....MEFIQWSKDN.VPV......G.........K...L..L.FD..  387
+5FKU_A   328  ..QV.NQ.G.PG.....MEFIQWSKDN.VPV......G.........K...L..L.FD..  387
+2HQA_A   328  ..QV.NQXG.PG.....XEFIQWSKDN.VPV......G.........K...L..L.FD..  387
+5LEW_A   342  .IDV.CSKG.PS.......LIS...SA..RV................G...I...PH...  401
+2HPI_A   390  ..SV.ER.G.PG.....Q.YINW..GH.VSV...............VG..NI..LRF...  449
+3E0D_A   390  ..SV.ER.G.PG.....Q.YINW..GH.VSV...............VG..NI..LRF...  449
+3F2B_A   446  ..KS.IGHG.AVIY..SHKLVKKSLDD.Y.V.-S...VGS.F..TMTE..E.N.L       499
+5GIR_B   52   N..WY.QKSHESPR.LIR----.TS.-S.SGI.S.F.GS..GTDFT...NS.ETEDF.MY  106
+
+Query_1  366  FERF  369
+4JOM_A   389  ....  392
+2HNH_A   388  ....  391
+5M1S_A   388  ....  391
+5FKU_A   388  ....  391
+2HQA_A   388  ....  391
+5LEW_A   402  ....  405
+2HPI_A   450  ....  453
+3E0D_A   450  ....  453
+5GIR_B   107  .     107
+
+
+Lambda      K        H        a         alpha
+   0.323    0.139    0.407    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 5515455056
+
+
+  Database: PDB protein database
+    Posted date:  Aug 8, 2021  4:26 AM
+  Number of letters in database: 34,844,698
+  Number of sequences in database:  130,881
+
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Neighboring words threshold: 11
+Window for multiple hits: 40

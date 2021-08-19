@@ -1,0 +1,327 @@
+PSIBLAST 2.12.0+
+
+
+Reference: Stephen F. Altschul, Thomas L. Madden, Alejandro A.
+Schaffer, Jinghui Zhang, Zheng Zhang, Webb Miller, and David J.
+Lipman (1997), "Gapped BLAST and PSI-BLAST: a new generation of
+protein database search programs", Nucleic Acids Res. 25:3389-3402.
+
+
+Reference for compositional score matrix adjustment: Stephen F.
+Altschul, John C. Wootton, E. Michael Gertz, Richa Agarwala,
+Aleksandr Morgulis, Alejandro A. Schaffer, and Yi-Kuo Yu (2005)
+"Protein database searches using compositionally adjusted
+substitution matrices", FEBS J. 272:5101-5109.
+
+
+Reference for composition-based statistics starting in round 2:
+Alejandro A. Schaffer, L. Aravind, Thomas L. Madden, Sergei
+Shavirin, John L. Spouge, Yuri I. Wolf, Eugene V. Koonin, and
+Stephen F. Altschul (2001), "Improving the accuracy of PSI-BLAST
+protein database searches with composition-based statistics and
+other refinements", Nucleic Acids Res. 29:2994-3005.
+
+
+
+Database: PDB protein database
+           130,881 sequences; 34,844,698 total letters
+
+Results from round 1
+
+
+Query= test_1
+
+Length=369
+                                                                      Score     E
+Sequences producing significant alignments:                          (Bits)  Value
+
+4JOM_A Structure of E. coli Pol III 3mPHP mutant [Escherichia col...  231     4e-68
+2HNH_A Crystal structure of the catalytic alpha subunit of E. col...  227     1e-66
+5M1S_A Cryo-EM structure of the E. coli replicative DNA polymeras...  227     1e-66
+5FKU_A cryo-EM structure of the E. coli replicative DNA polymeras...  227     5e-66
+2HQA_A Crystal structure of the catalytic alpha subunit of E. Col...  209     3e-60
+5LEW_A DNA polymerase [Mycobacterium tuberculosis H37Rv]              207     1e-59
+2HPI_A Eubacterial and Eukaryotic Replicative DNA Polymerases are...  196     2e-55
+3E0D_A Insights into the Replisome from the Crystral Structure of...  196     3e-55
+4GX9_A Crystal structure of a DNA polymerase III alpha-epsilon ch...  123     1e-31
+4GX8_A Crystal structure of a DNA polymerase III alpha-epsilon ch...  122     1e-31
+3F2B_A DNA Polymerase PolC from Geobacillus kaustophilus complex ...  84.0    6e-17
+7LS6_H Chain H, Proteasome maturation factor UMP1 [Saccharomyces ...  32.0    0.69 
+7A7D_A Cadherin fit into cryo-ET map [Homo sapiens]                   32.7    1.1  
+5ERD_A Crystal structure of human Desmoglein-2 ectodomain [Homo s...  32.7    1.1  
+5J5J_A Crystal structure of a chimera of human Desmocollin-2 EC1 ...  32.3    1.2  
+6Q4S_A Crystal structure of a-eudesmol synthase [Streptomyces cha...  32.0    1.5  
+3B0Y_A K263D mutant of PolX from Thermus thermophilus HB8 complex...  32.0    1.7  
+3B0X_A K263A mutant of PolX from Thermus thermophilus HB8 complex...  32.0    1.8  
+3AU2_A DNA polymerase X from Thermus thermophilus HB8 complexed w...  32.0    1.8  
+5GIR_B Crystal structure of a Fab fragment with its ligand peptid...  29.3    9.3  
+
+
+
+Query_1  1    MTFVHLHVLSGYSLFQSTATVEALVAKAKQLGYRALALTDHQVLYGAIPFYRECQRHGLR  60
+4JOM_A   7      ......H.D..MIDGL.KTAP..K..AA..MP...I...TN.C.LVK..GAGHGA.IK  64
+2HNH_A   6      ....R.H.D..MIDGL.KTAP..K..AA..MP...I..FTN.C.LVK..GAGHGA.IK  63
+5M1S_A   6      ....R.H.D..MIDGL.KTAP..K..AA..MP...I..FTN.C.LVK..GAGHGA.IK  63
+5FKU_A   6      ....R.H.D..MIDGL.KTAP..K..AA..MP...I..FTN.C.LVK..GAGHGA.IK  63
+2HQA_A   6      ....R.H.D..XIDGL.KTAP..K..AA..XP...I..FTN.C.LVK..GAGHGA.IK  63
+5LEW_A   3     S.....NHTE..MLDGA.KITPML.EVER..MP.VGM...GNMF..SE..NSATKA.IK  61
+2HPI_A   5    LK.A...QHTQF..LDGA.KLQD.LKWV.ETTPE...M...GN.F..VE..KKATAM.VK  66
+                                                \                         
+                                                |                         
+                                               DP
+3E0D_A   5    LK.A...QHTQF..LNGA.KLQD.LKWV.ETTPE...M...GN.F..VE..KKATAM.VK  66
+                                                \                         
+                                                |                         
+                                               DP
+4GX9_A   60     ....R.H.D..MIDGP.KTAP..K..AA..MP...I..FTN.C.LVK..GAGHGA.IK  117
+4GX8_A   51     ....R.H.D..MIDGP.KTAP..K..AA..MP...I..FTN.C.LVK..GAGHGA.IK  108
+3F2B_A   117     .E..LHTPM.QMDAVTS.TK.IEQ..KW.HP.I.V...A.VQSFPEA.SAAKK..MK  173
+3B0Y_A   341       .Q.H.T..DG.N.--L.E.WEA..TM...Y..V...                     374
+3B0X_A   341       .Q.H.T..DG.N.--L.E.WEA..TM...Y..V...                     374
+3AU2_A   341       .Q.H.T..DG.N.--L.E.WEA..TM...Y..V...                     374
+
+Query_1  61   PIIGMMADVVLDGDSGAFPLVLLAANEEGYRHLIEISTAVQMGEEKHVHEAALRRLSGGI  120
+4JOM_A   65   ..V.ADFN.QC...ELTH-.TV....NT..QN.LL..K.Y.R.YGAAIDRDW.IE.NE.L  129
+                          \                    \             \            
+                          |                    |             |            
+                         LL                    T           GPI
+2HNH_A   64   ..V.ADFN.QC...ELTH-.TV....NT..QN.LL..K.Y.R.YGAAIDRDW.IE.NE.L  128
+                          \                    \             \            
+                          |                    |             |            
+                         LL                    T           GPI
+5M1S_A   64   ..V.ADFN.QC...ELTH-.TV....NT..QN.LL..K.Y.R.YGAAIDRDW.IE.NE.L  128
+                          \                    \             \            
+                          |                    |             |            
+                         LL                    T           GPI
+5FKU_A   64   ..V.ADFN.QC...ELTH-.TV....NT..QN.LL..K.Y.R.YGAAIDRDW.IE.NE.L  128
+                          \                    \             \            
+                          |                    |             |            
+                         LL                    T           GPI
+2HQA_A   64   ..V.ADFN.QC...ELTH-.TV....NT..QN.LL..K.Y.R.YGAAIDRDW.IE.NE.L  128
+                          \                    \             \            
+                          |                    |             |            
+                         LL                    T           GPI
+5LEW_A   62   ....VE.YII.W....SYT.TMM.E.AT.L.N.FKL.SHA.LSKWSRMDAELIAEHAE..  146
+                       \    \    \                    \                   
+                       |    |    |                    |                   
+              APGSRFDTRR PSQKADDVSG                SFEG
+                                 |                                        
+                                 H
+2HPI_A   67   ....YE.Y.AAES.G.Y.H.T...KDFT..QN.VRLASRAYLE.KPRIDREI..EHAQ.L  139
+                           \                             \                
+                           |                             |                
+                  RFDRKRGKGL                           GFY
+3E0D_A   67   ....YE.Y.AAES.G.Y.H.T...KDFT..QN.VRLASRAYLE.KPRIDREI..EHAQ.L  139
+                           \                             \                
+                           |                             |                
+                  RFDRKRGKGL                           GFY
+4GX9_A   118  ..V.ADFN.QC...ELTH-.TV....NT..QN.LL..K.Y.R.YGAAIDRDW.IE.NE.L  182
+                          \                    \             \            
+                          |                    |             |            
+                         LL                    T           GPI
+4GX8_A   109  ..V.ADFN.QC...ELTH-.TV....NT..QN.LL..K.Y.R.YGAAIDRDW.IE.NE.L  173
+                          \                    \             \            
+                          |                    |             |            
+                         LL                    T           GPI
+3F2B_A   174  V.Y.LE.NI.D..G..P.HVT...Q..T.LKN.FKL---.SLSHIQYF.RSV.VKHRD.L  250
+                           \                                   \          
+                           |                                   |          
+              VPIAYNETHRRLGS                              RVPRIP
+7LS6_H   32                                                      T..QQE..A  40
+6Q4S_A   255                          .TD.A..MT..LQER...CD.LRLD..ERD.VRM.V  298
+                                                \     \                   
+                                                |     |                   
+                                          ACLDEYL     P
+
+Query_1  121  IAITPGLNGRVESFLAAGEVAQAKETLLRYRQLFAGCLYIAIQRGERTRAPYESALLRLA  180
+4JOM_A   130  .LLSG.RM.D.GRS.LR.NS.LVD.CVAF.EEH.PDRYFLELI..RPDEES.LH.AVE..  190
+                                                          \               
+                                                          |               
+                                                          T
+2HNH_A   129  .LLSG.RM.D.GRS.LR.NS.LVD.CVAF.EEH.PDRYFLELI..RPDEES.LH.AVE..  189
+                                                          \               
+                                                          |               
+                                                          T
+5M1S_A   129  .LLSG.RM.D.GRS.LR.NS.LVD.CVAF.EEH.PDRYFLELI..RPDEES.LH.AVE..  189
+                                                          \               
+                                                          |               
+                                                          T
+5FKU_A   129  .LLSG.RM.D.GRS.LR.NS.LVD.CVAF.EEH.PDRYFLELI..RPDEES.LH.AVE..  189
+                                                          \               
+                                                          |               
+                                                          T
+2HQA_A   129  .LLSG.RX.D.GRS.LR.NS.LVD.CVAF.EEH.PDRYFLE.RT.RPDEES.LH.AVE..  189
+                                                       \                  
+                                                       |                  
+                                                       L
+5LEW_A   147  .IT.GCPS.E.QTR.RL.QDRE.L.AAAKW.EIVGPDN.FLMDH.LTIERRVRDG..EIG  208
+                                                       \                  
+                                                       |                  
+                                                      EL
+2HPI_A   140  ..LSGC.GAEIPQ.ILQDRLDL.EAR.NEDLSI.GDRFF.E..N.LPEQKKVNQV.KEF.  200
+                                                          \               
+                                                          |               
+                                                          H
+3E0D_A   140  ..LSGC.GAEIPQ.ILQDRLDL.EAR.NEDLSI.GDRFF.E..N.LPEQKKVNQV.KEF.  200
+                                                          \               
+                                                          |               
+                                                          H
+4GX9_A   183  .LLSG.RM.D.GRS.LR.NS.LVD.CVAF.EEH.PDRYFLE.RT.RPDEES.LH.AVE..  243
+                                                       \                  
+                                                       |                  
+                                                       L
+4GX8_A   174  .LLSG.RM.D.GRS.LR.NS.LVD.CVAF.EEH.PDRYFLE.RT.RPDEES.LH.AVE..  234
+                                                       \                  
+                                                       |                  
+                                                       L
+3F2B_A   251  LVGSGCDK.ELFDN.IQ-KAPEEV.DIA.FYDVYKPLIEMDYVKD.EMIKNIIRSIVA.G  317
+                                             \                            
+                                             |                            
+                                      DFLEVHPP
+7LS6_H   41   VPLSTQ..D.L..T.KNW.TT.RQRQMEQ...I.G                           77
+                        \                                                 
+                        |                                                 
+                       HP
+6Q4S_A   299  E..QHWI..NY.WA.TS.RY.A...                                     323
+
+Query_1  181  EETGVPVVATNEVRYVEREDALAWRCLEAIGDGVPLAHIPEEDERYLAAPDEMARRFADL  240
+4JOM_A   191  .AR.L......D.HFIDSS.FD.HEIRV..H..F.RNYS.QQ---.MRSEE..CEL...I  254
+                                                \                         
+                                                |                         
+                                          TLDDPKR
+2HNH_A   190  .AR.L......D..FIDSS.FD.HEIRV..H..F.RNYS.QQ---.MRSEE..CEL...I  253
+                                                \                         
+                                                |                         
+                                          TLDDPKR
+5M1S_A   190  .AR.L......D..FIDSS.FD.HEIRV..H..F.RNYS.QQ---.MRSEE..CEL...I  253
+                                                \                         
+                                                |                         
+                                          TLDDPKR
+5FKU_A   190  .AR.L......D..FIDSS.FD.HEIRV..H..F.RNYS.QQ---.MRSEE..CEL...I  253
+                                                \                         
+                                                |                         
+                                          TLDDPKR
+2HQA_A   190  .AR.L......D..FIDSS.FD.HEIRV..H..F.RNYS.QQ---.XRSEE.XCEL...I  253
+                                                \                         
+                                                |                         
+                                          TLDDPKR
+5LEW_A   209  RALNI.PL...DCH..T.DA.HNHEA.LCVQT.KT.SDPNDG.GY..KSAA..RQIWD.V  273
+                                                      \                  \
+                                                      |                  |
+                                                   RFKF                  E
+2HPI_A   201  RKY.LGM....DGH..RK...R.HEV.L..QSKTT.DD-..R..F.VKT.E..R---.M.  261
+                                                        \                 
+                                                        |                 
+                                                    WRFPC
+3E0D_A   201  RKY.LGM....NGH..RK...R.HEV.L..QSKTT.DD-..R..F.VKT.E..R---.M.  261
+                                                        \                 
+                                                        |                 
+                                                    WRFPC
+4GX9_A   244  .AR.L......D..FIDSS.FD.HEIRV..H..F.RNYS.QQ---.MRSEE..CEL...I  307
+                                                \                         
+                                                |                         
+                                          TLDDPKR
+4GX8_A   235  .AR.L......D..FIDSS.FD.HEIRV..H..F.RNYS.QQ---.MRSEE..CEL...I  298
+                                                \                         
+                                                |                         
+                                          TLDDPKR
+3F2B_A   318  .KLDI.....GN.H.LNP..KIYRKI.HSQ.GAN..NR-H.LPDV.FRTTN..LDC.SF.  377
+                                         \                                
+                                         |                                
+                                         I
+7A7D_A   369  .D..L.AH.----...KL..RDN.ISVDSVTSEIK..KL.DFES..V               411
+5ERD_A   369  .D..L.AH.----...KL..RDN.ISVDSVTSEIK..KL.DFES..V               411
+5J5J_A   367  .D..L.AH.----...KL..RDN.ISVDSVTSEIK..KL.DFES..V               409
+
+Query_1  241  PEALENSMNIANQCELHIEFGRWRLPKFPVPDGETADSYLRRLCEQGLARRVPSADARYR  300
+4JOM_A   255  ....A.TVE..KR.NVTVRL.EYF..Q..TG.MS.E.-..VKRAKE..EE.L.DEEE..D  323
+                                                                  \     \ 
+                                                                  |     | 
+                                                               AFLF LKRRPE
+2HNH_A   254  ....A.TVE..KR.NVTVRL.EYF..Q..TG.MS.E.-..VKRAKE..EE.L.DEEE..D  322
+                                                                  \     \ 
+                                                                  |     | 
+                                                               AFLF LKRRPE
+5M1S_A   254  ....A.TVE..KR.NVTVRL.EYF..Q..TG.MS.E.-..VKRAKE..EE.L.DEEE..D  322
+                                                                  \     \ 
+                                                                  |     | 
+                                                               AFLF LKRRPE
+5FKU_A   254  ....A.TVE..KR.NVTVRL.EYF..Q..TG.MS.E.-..VKRAKE..EE.L.DEEE..D  322
+                                                                  \     \ 
+                                                                  |     | 
+                                                               AFLF LKRRPE
+2HQA_A   254  ....A.TVE..KR.NVTVRL.EYF..Q..TG.XS.E.-..VKRAKE..EE.L.DEEE..D  322
+                                                                  \     \ 
+                                                                  |     | 
+                                                               AFLF LKRRPE
+5LEW_A   274  .G.CDSTLL..ERVQSYADVW.D.M.V......HDQA.W..HEVDA..R..F.AGPPD..  336
+                                   \                                    \ 
+                                   |                                    | 
+                                  TP                                    G
+2HPI_A   262  ...FD.TVE..RM.DVDLPI.DY.I.R..L.E.R.EAQ...E.TFL..L..Y.DTE.F..  332
+                 \                  \                               \     
+                 |                  |                               |     
+              EWGDEP              KMV                              RI
+3E0D_A   262  ...FD.TVE..RM.DVDLPI.DY.I.R..L.E.R.EAQ...E.TFL..L..Y.DTE.F..  332
+                 \                  \                               \     
+                 |                  |                               |     
+              EWGDEP              KMV                              RI
+4GX9_A   308  ....A.TVE..KR.NV                                              323
+4GX8_A   299  ....A.TVE..KR.NV                                              314
+3F2B_A   378  GPEKAKEIVVD.TQKIASLI.DVKPI.LYT.RI.G..EEI..RAKEIYGDPL.KL---VE  440
+                                         \             \                  
+                                         |             |                  
+                                        DE          EMSY
+5GIR_B   40                                                        .LSC.AS  46
+
+Query_1  301  ERLEHELHIIQTMRFSDYFLIVADVLAYARQRGILTGPGRGSAAGSLVAYALSITDVDPI  360
+4JOM_A   324  ....T..QV.NQ.G.PG.....MEFIQWSKDN.VPV......G.........K...L..L  383
+2HNH_A   323  ....T..QV.NQ.G.PG.....MEFIQWSKDN.VPV......G.........K...L..L  382
+5M1S_A   323  ....T..QV.NQ.G.PG.....MEFIQWSKDN.VPV......G.........K...L..L  382
+5FKU_A   323  ....T..QV.NQ.G.PG.....MEFIQWSKDN.VPV......G.........K...L..L  382
+2HQA_A   323  ....T..QV.NQXG.PG.....XEFIQWSKDN.VPV......G.........K...L..L  382
+5LEW_A   337  ..AAY.IDV.CSKG.PS.......LIS...SA..RV................G...I...  396
+2HPI_A   333  .V.RY..SV.ER.G.PG.....Q.YINW..GH.VSV...............VG..NI..L  444
+                  \                                                       
+                  |                                                       
+              LLGTMPPHGDERALAEALARVEEKAWEELRKRLPPLEGVREWTAEAILHRAL
+3E0D_A   333  .V.RY..SV.ER.G.PG.....Q.YINW..GH.VSV...............VG..NI..L  444
+                  \                                                       
+                  |                                                       
+              LLGTMPPHGDERALAEALARVEEKAWEELRKRLPPLEGVREWTAEAILHRAL
+3F2B_A   441  ....K..KS.IGHG.AVIY..SHKLVKKSLDD.Y.V.-S...VGS.F..TMTE..E.N.L  499
+5GIR_B   47   Q.ISNN..WY.QKSHESPR.LIR----.TS.-S.SGI.S.F.GS..GTDFT...NS.ETE  101
+
+Query_1  361  EYGLLFERF  369
+4JOM_A   384  .FD......  392
+2HNH_A   383  .FD......  391
+5M1S_A   383  .FD......  391
+5FKU_A   383  .FD......  391
+2HQA_A   383  .FD......  391
+5LEW_A   397  PH.......  405
+2HPI_A   445  RF.......  453
+3E0D_A   445  RF.......  453
+5GIR_B   102  DF.MY.     107
+
+
+Lambda      K        H        a         alpha
+   0.323    0.139    0.407    0.792     4.96 
+
+Gapped
+Lambda      K        H        a         alpha    sigma
+   0.267   0.0410    0.140     1.90     42.6     43.6 
+
+Effective search space used: 5515455056
+
+
+  Database: PDB protein database
+    Posted date:  Aug 8, 2021  4:26 AM
+  Number of letters in database: 34,844,698
+  Number of sequences in database:  130,881
+
+
+
+Matrix: BLOSUM62
+Gap Penalties: Existence: 11, Extension: 1
+Neighboring words threshold: 11
+Window for multiple hits: 40
