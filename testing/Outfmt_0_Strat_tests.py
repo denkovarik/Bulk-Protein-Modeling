@@ -10,6 +10,32 @@ class Outfmt_0_Strat_tests(unittest.TestCase):
     """
     Runs all tests for the Outfmt_0_Strat class.
     """     
+    def test_next(self):
+        """
+        Tests the overloaded python function next()
+        """
+        # Testing BLAST rslt outfmt 0
+        outfmt0_path = currentdir + "\\test_files\\outfmt_0.txt"
+        os.path.isfile(outfmt0_path)
+        ext = outfmt0_path.split(".")[-1]
+        self.assertTrue(ext == "txt")
+        # Read the file
+        with open(outfmt0_path) as f:
+            content = f.read()
+        self.assertTrue(Outfmt_0_Strat.is_outfmt_0(content, ext))
+        itr = Outfmt_0_Strat(content, outfmt0_path)
+        next(itr)
+        self.assertTrue(itr.features['accession'] == '4JOM_A')
+        self.assertTrue(itr.features['score'] == 231.0)
+        self.assertTrue(itr.features['e_value'] == float("4e-68"))
+        self.assertTrue(itr.features['per_ident'] == 40.0)
+        next(itr)
+        self.assertTrue(itr.features['accession'] == '2HNH_A')
+        self.assertTrue(itr.features['score'] == 227.0)
+        self.assertTrue(itr.features['e_value'] == float("1e-66"))
+        self.assertTrue(itr.features['per_ident'] == 39.0)
+        
+        
     def test_init(self):
         """
         Tests the Outfmt_0_Strat class member function init
@@ -40,9 +66,9 @@ class Outfmt_0_Strat_tests(unittest.TestCase):
             content = f.read()
         self.assertTrue(Outfmt_0_Strat.is_outfmt_0(content, ext))
         itr = Outfmt_0_Strat(content, outfmt0_path)
-        itr.pos = 0
+        itr.start_pos = 0
         itr.begin()
-        self.assertTrue(itr.pos == 2931)
+        self.assertTrue(itr.start_pos == 1165)
         
         
     def test_is_outfmt_0(self):
