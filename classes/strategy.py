@@ -51,7 +51,7 @@ class Outfmt_0_Strat(Strategy):
         all the results returned from BLAST.
             
         :param self: An instance of the Outfmt_0_Strat class
-        :return: The accession number of the next protein from the results
+        :return: The features of the next protein from the results
         """
         if not self.began:
             self.began = True
@@ -119,7 +119,8 @@ class Outfmt_0_Strat(Strategy):
         Extracts the accession number from the current row.
         
         :param self: An instance of the Outfmt_0_Strat class.
-        :param row: A row from the results table in the html file as a String
+        :param row: Row of results table in results as a String
+        :return: The accession number of the current row.
         """
         s = row.find(">") + 1
         e = row.find(" ", s)
@@ -132,7 +133,8 @@ class Outfmt_0_Strat(Strategy):
         Extracts the E value from the current row.
         
         :param self: An instance of the Outfmt_0_Strat class.
-        :param row: A row from the results table in the html file as a String
+        :param row: Row of results table in results as a String
+        :return: The E value number of the current row.
         """
         s = row.find("Expect =")
         s = row.find("=", s) + 1
@@ -148,7 +150,8 @@ class Outfmt_0_Strat(Strategy):
         currently being extracted are the id and the protein names.
          
         :param self: An instance of the Outfmt_0_Strat class.
-        :param row: A row from the results table in the html file as a String
+        :param row: Row of results table in results as a String
+        :return: The extracted features of the current row.
         """
         self.features['accession'] = self.extract_accession(row)
         self.features['score'] = self.extract_score(row)
@@ -161,7 +164,8 @@ class Outfmt_0_Strat(Strategy):
         Extracts the E value from the current row.
         
         :param self: An instance of the Outfmt_0_Strat class.
-        :param row: A row from the results table in the html file as a String
+        :param row: Row of results table in results as a String
+        :return: The per identity of the current row.
         """
         s = row.find("Identities =")
         s = row.find("(", s) + 1
@@ -176,7 +180,8 @@ class Outfmt_0_Strat(Strategy):
         Extracts the score from the current row.
         
         :param self: An instance of the Outfmt_0_Strat class.
-        :param row: A row from the results table in the html file as a String
+        :param row: Row of results table in results as a String
+        :return: The score of the current row.
         """
         s = row.find("Score =")
         s = row.find("=", s) + 1
@@ -192,6 +197,8 @@ class Outfmt_0_Strat(Strategy):
         
         :param content: The content of the BLAST results file.
         :param ext: The extension of the file.
+        :return: True if content is of format outfmt 0
+        :return: False otherwise.
         """
         if ext == "txt":
             pos = content.find("Sequences producing significant alignments:")
