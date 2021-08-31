@@ -66,7 +66,7 @@ class PSI_BLAST():
             commands += [cmd]
         else:
             # Create files for fasta sequences.
-            queries = self.parse_fasta(args['script_args']['-query_parallel'])
+            queries = PSI_BLAST.parse_fasta(args['script_args']['-query_parallel'])
             if not os.path.isdir(blast_rslt_dir):
                 os.mkdir(blast_rslt_dir)
             if not os.path.isdir(blast_working_dir):
@@ -227,12 +227,12 @@ class PSI_BLAST():
             args['script_args']['rslt_ext'] = '.txt'
         return args
         
-        
-    def parse_fasta(self, filepath):
+    
+    @staticmethod
+    def parse_fasta(filepath):
         """
         Parses a fasta file and extracts the sequence descriptions and sequences.
         
-        :param self: The instance of the PSI_BLAST class.
         :param filepath: The filepath of the file containing the multiple fasta 
                          sequences.
         :return: A dictionary mapping fasta descriptions to their sequences.
