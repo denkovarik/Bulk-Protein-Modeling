@@ -1,4 +1,5 @@
 import sys, os, time
+import subprocess
 from subprocess import Popen, list2cmdline
 import shutil
 from progress.bar import IncrementalBar
@@ -131,7 +132,7 @@ class PSI_BLAST():
 
         max_task = self.cpu_count()
         processes = []
-        bar = IncrementalBar('| BLASTing Sequences...', max = len(cmds))
+        bar = IncrementalBar('| BLASTing Sequences...\t', max = len(cmds))
         while True:
             while cmds and len(processes) < max_task:
                 task = cmds.pop()
