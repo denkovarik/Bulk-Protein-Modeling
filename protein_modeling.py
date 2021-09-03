@@ -9,7 +9,8 @@ from modeller import *
 from subprocess import Popen, list2cmdline
 from utils import *
 from progress.bar import IncrementalBar
-    
+
+  
 # Mark the Start Time
 start_time = time.time()
 # Define filepaths to working and results directory for the PSI BLAST algorithm
@@ -49,7 +50,8 @@ bar = IncrementalBar('| Collecting Files for Alignment...\t', max = num_queries)
 
 orig = sys.stdout
 log_file = open(os.devnull, "w")
-sys.stdout = log_file
+sys.stdout = log_file   
+templates = []
 for file in os.listdir(blast_rslt_dir):
     if file.split(".")[0] in queries:
         seq = queries[file.split(".")[0]]
@@ -76,15 +78,16 @@ for file in os.listdir(blast_rslt_dir):
                 break
                 
             bsali = ">P1;Bs\nsequence:Bs:::::::0.00: 0.00\n" + seq + "*"
-            ali_filename = "bs_" + acc + ".ali"
-            f = open(ali_filename, "w")
+            ali_file = "Bs-" + acc + "A.ali"
+            f = open(ali_file, "w")
             f.write(bsali)
             f.close()
             template_path = acc + ".pdb"
-            task = ['py', 'align2d.py', acc, template_path, ali_filename]
+            templates += [template_path]
+            task = ['py', 'align2d.py', acc, template_path, ali_file]
             tasks += [task]
-            pap_file = 'align\Bs-' + acc + '.pap'
-            align_files += (ali_filename, pap_file)
+            pap_file = 'align\\Bs-' + acc + 'A.pap'
+            align_files += [(acc, ali_file, pap_file)]
         
         bar.next()
         
@@ -93,6 +96,19 @@ exec_commands(tasks, '| Aligning Proteins...\t')
 
 print("\n")
 
-
+num_alignments = 0
+align_dir = "align\\"
+tasks = []
+for entry in align_files:
+    if entry[1][entry[1].rfind("\\") + 1:] in os.listdir(align_dir):
+        task = ['py', 'model-single.py', '-knowns', entry[0]+"A", '-ali_path', 'align\\' + entry[1], '-results_dir', 'protein_models', '-template_path', entry[0] + ".pdb"]
+        tasks += [task]
+        num_alignments += 1
+        
+exec_commands(tasks, '| Modeling Proteins...\t')
+print("\n")
 
 print("---Runtime: %s seconds ---" % (time.time() - start_time))
+
+for temp in templates:
+    os.remove(temp)
