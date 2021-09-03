@@ -83,14 +83,16 @@ for file in os.listdir(blast_rslt_dir):
             template_path = acc + ".pdb"
             task = ['py', 'align2d.py', acc, template_path, ali_filename]
             tasks += [task]
+            pap_file = 'align\Bs-' + acc + '.pap'
+            align_files += (ali_filename, pap_file)
         
         bar.next()
         
- 
-sys.stdout = orig
 print("\n")
 exec_commands(tasks, '| Aligning Proteins...\t')
 
 print("\n")
+
+
 
 print("---Runtime: %s seconds ---" % (time.time() - start_time))
