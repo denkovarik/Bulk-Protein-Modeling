@@ -10,6 +10,7 @@
 # Usage:
 #   py model-single.py  -knowns known_id 
 #                       -ali_path path_to_.ali_file
+#                       -template_path path_to_pdb_template_file
 #                       -results_dir path_to_dump_output_files_in
 # 
 # Modified by Dennis Kovarik
@@ -40,13 +41,15 @@ def parse_args(cmd_args):
     args = {}
     i = 1
     while i < len(cmd_args):
-        print(cmd_args[i])
         if cmd_args[i] == '-knowns':
             args['-knowns'] = cmd_args[i+1]
             i += 1
         elif cmd_args[i] == '-ali_path':
             args['-ali_path'] = cmd_args[i+1]
             args['ali_filename'] = args['-ali_path'][args['-ali_path'].rfind("\\")+1:]
+            i += 1
+        elif cmd_args[i] == '-template_path':
+            args['-template_path'] = cmd_args[i+1]
             i += 1
         elif cmd_args[i] == '-results_dir':
             args['-results_dir'] = cmd_args[i+1]
@@ -70,9 +73,15 @@ if not os.path.isdir(args['-results_dir'] + protein_id):
 dest = args['-results_dir'] + protein_id + "\\" + args['ali_filename']
 if not os.path.isfile(dest):
     shutil.copy(ali_path, dest)
+dest = args['-results_dir'] + protein_id + "\\" + args['-template_path'] 
+if not os.path.isfile(dest):
+    shutil.copy(args['-template_path'], dest)
 # Change into the correct directory
 os.chdir(args['-results_dir'])
 os.chdir(protein_id)
+log_file = open("model-single.log", "w")
+orig = sys.stdout
+sys.stdout = log_file  
 # Run the protein modeling
 env = Environ()
 a = AutoModel(env, alnfile=args['ali_filename'],
@@ -81,3 +90,4 @@ a = AutoModel(env, alnfile=args['ali_filename'],
 a.starting_model = 1
 a.ending_model = 5
 a.make()
+sys.stdout = orig
