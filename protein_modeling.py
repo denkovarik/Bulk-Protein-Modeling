@@ -47,6 +47,9 @@ for file in os.listdir(blast_rslt_dir):
         
 bar = IncrementalBar('| Collecting Files for Alignment...\t', max = num_queries)
 
+orig = sys.stdout
+log_file = open(os.devnull, "w")
+sys.stdout = log_file
 for file in os.listdir(blast_rslt_dir):
     if file.split(".")[0] in queries:
         seq = queries[file.split(".")[0]]
@@ -59,8 +62,11 @@ for file in os.listdir(blast_rslt_dir):
         for protein in iter(BLAST_Rslts_Itr(content, path)):
             acc = protein['accession'][:protein['accession'].find("_")]
             break
+        # Download the pdb file
         if acc is not None:
-            #downloaded_path = pdbdownload.retrieve_pdb_file(acc, file_format="pdb", pdir=pdb_dir + acc, overwrite=True)
+            sys.stdout = log_file
+            downloaded_path = pdbdownload.retrieve_pdb_file(acc, file_format="pdb", pdir=pdb_dir + acc, overwrite=True)
+            sys.stdout = orig
             for file in os.listdir(pdb_dir + acc):
                 src = pdb_dir + acc + "\\" + file
                 dest = acc + ".pdb"
@@ -77,8 +83,11 @@ for file in os.listdir(blast_rslt_dir):
             template_path = acc + ".pdb"
             task = ['py', 'align2d.py', acc, template_path, ali_filename]
             tasks += [task]
+        
         bar.next()
-
+        
+ 
+sys.stdout = orig
 print("\n")
 exec_commands(tasks, '| Aligning Proteins...\t')
 
