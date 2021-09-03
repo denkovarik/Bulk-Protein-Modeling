@@ -62,7 +62,7 @@ def cpu_count():
     return num
         
         
-def exec_commands(cmds):
+def exec_commands(cmds, msg = '| Running Commands'):
     ''' Exec commands in parallel in multiple process 
     (as much as we have CPU)
     '''
@@ -77,7 +77,7 @@ def exec_commands(cmds):
 
     max_task = cpu_count()
     processes = []
-    bar = IncrementalBar('| Aligning Proteins...', max = len(cmds))
+    bar = IncrementalBar(msg, max = len(cmds))
     while True:
         while cmds and len(processes) < max_task:
             task = cmds.pop()
@@ -96,3 +96,6 @@ def exec_commands(cmds):
             break
         else:
             time.sleep(0.05)
+            
+            
+            
