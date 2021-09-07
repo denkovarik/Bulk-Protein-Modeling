@@ -2,6 +2,7 @@ import sys, os, time
 from subprocess import Popen, list2cmdline
 import shutil
 from progress.bar import IncrementalBar
+import pandas as pd
 
 
 def check_cmd_args(args):
@@ -36,6 +37,36 @@ def check_cmd_args(args):
         print(err)
         usage()
         exit()
+        
+        
+def cmpl_mult_seq_fasta(reader, seq_col, loc_col):
+    """
+    Parses a genome annotation excel file sequences to add to a multisequence 
+    fasta file.
+    
+    :param reader: An instance of the Annot_Reader class.
+    :param seq_col: Column containing the aa sequence.
+    :param loc_col: Column containing the ids for proteins
+    :return: String of the fasta file to write
+    """
+    ids = {}
+    seq = ""
+    fasta = ""
+    for row in reader.rows:
+        seq = reader.df[seq_col][row]
+        seq_id = ""
+        if reader.df[loc_col][row] in ids.keys():
+            c = ids[reader.df[loc_col][row]]['count']
+            seq_id = reader.df[loc_col][row] + "(" + str(c) + ")"
+            ids[reader.df[loc_col][row]]['count'] += 1
+        else:
+            seq_id = reader.df[loc_col][row]
+            ids[reader.df[loc_col][row]] =  {
+                                                "id" : reader.df[loc_col][row],
+                                                "count" : 1
+                                            }
+        fasta += ">" + seq_id + "\n" + seq + "\n\n"
+    return fasta
     
     
 def cpu_count():
@@ -98,4 +129,16 @@ def exec_commands(cmds, msg = '| Running Commands'):
             time.sleep(0.05)
             
             
-            
+def read_header(filepath):
+    """
+    Reads the header of a genome annotation and returns the column names as a 
+    list.
+    
+    :param filepath: Filepath to the genome annotation
+    :return: A list of the column names
+    """  
+    col_labels = []
+    excel_data_df = pd.read_excel(filepath)
+    for col in excel_data_df.columns:
+        col_labels += [col]
+    return col_labels
