@@ -1,0 +1,1 @@
+py protein_modeling.py -query_parallel C:\Users\1985937\Documents\BI_Sum_2021\Bulk-Protein-Modeling\testing\test_files\test_small.fasta -db D:\BLAST\db\db_pdb\pdbaa\pdbaa
