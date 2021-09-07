@@ -133,4 +133,6 @@ ncbi-blast-2.12.0+/
 blast_rslts/
 align/
 protein_models/
+temp/
+saved_jobs/
 
