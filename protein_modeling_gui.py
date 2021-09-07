@@ -18,6 +18,7 @@ import xlwings as xw
 import pandas as pd
 from classes.Annot_Reader import *
 from utils import *
+import math
 
 
 def add_optional_cmd_args(values, tag):
@@ -486,7 +487,7 @@ def multi_seq_fasta():
                     justification='center', font=("Helvetica", 25), \
                     relief=sg.RELIEF_RIDGE)], 
                     [sg.Text("")],
-                    [sg.Text('Input RAST Genome Annotation'), \
+                    [sg.Text('Select RAST Genome Annotation'), \
                     sg.InputText(key='--src'), sg.FileBrowse()],
                     [sg.Text('Keywords')] + [sg.Input(key='--keywords')],
                     [sg.Text('Output Fasta Filename')] \
@@ -519,9 +520,9 @@ def multi_seq_fasta():
                 filename = filepath.split("\\")[-1]
                 col_labels = read_header(filepath)
                 menu_cols = tuple(col_labels)
-                layout += [sg.Text("Selected Genome Annotation: " + filename, \
-                    justification='left', font=("Helvetica", 12))], \
-                    [sg.Text("Select Column Containing Protein Amino Acid Sequence"), \
+                layout += [sg.Text("Selected Genome Annotation: " + filename \
+                    + "\n", justification='left', font=("Helvetica", 12))], \
+                    [sg.Text("Select Column Containing the Amino Acid Sequences"), \
                     sg.InputOptionMenu(menu_cols, key="protein col")], [sg.Text("")], 
                 layout += [sg.Text("Select Column to Use for Identifying the Proteins"), \
                     sg.InputOptionMenu(menu_cols, key="id col")], [sg.Text("")],
@@ -563,19 +564,60 @@ def multi_seq_fasta():
     window.close()
     
     
+        
+        
+def cmpl_mult_seq_fasta(reader, seq_col, loc_col):
+    """
+    Parses a genome annotation excel file sequences to add to a multisequence 
+    fasta file.
+    
+    :param reader: An instance of the Annot_Reader class.
+    :param seq_col: Column containing the aa sequence.
+    :param loc_col: Column containing the ids for proteins
+    :return: String of the fasta file to write
+    """
+    ids = {}
+    seq = ""
+    fasta = ""
+    for row in reader.rows:
+        seq = reader.df[seq_col][row]
+        seq_id = ""
+        # Check is the sequence ID is unique or not
+        if reader.df[loc_col][row] in ids.keys():  
+            # If not unique, then make it unique
+            c = ids[reader.df[loc_col][row]]['count']
+            seq_id = reader.df[loc_col][row] + "(" + str(c) + ")"
+            ids[reader.df[loc_col][row]]['count'] += 1
+            print("not unique", end="")
+            print("\t-\t" + str(seq_id))
+        else:
+            seq_id = reader.df[loc_col][row]
+            ids[reader.df[loc_col][row]] =  {
+                                                "id" : reader.df[loc_col][row],
+                                                "count" : 1
+                                            }
+        # Add to fasta file as a string
+        try:
+            if type(seq) == type("str"):
+                fasta += ">" + str(seq_id) + "\n" + str(seq) + "\n\n"                
+        except Exception as e:
+            print(e)
+    return fasta
+    
+    
 def main():
     """
     This is the main window which is the start of the program.
     """
     # Define the layout of the main window
     layout =    [
-                    [sg.Text('EC-Scrape', size=(15, 1), \
+                    [sg.Text('Bulk Protein Modeling', size=(20, 1), \
                     justification='center', font=("Helvetica", 25), \
                     relief=sg.RELIEF_RIDGE)], 
                     [sg.Button("Compile Multisequence Fasta File", \
                                key="multi_seq_fasta")],
                 ]
-    window = sg.Window('EC-Scrape', layout, resizable=True, finalize=True)
+    window = sg.Window('Bulk Protein Modeling', layout, resizable=True, finalize=True)
     # Loop for the main window
     while True:
         event, values = window.read()
