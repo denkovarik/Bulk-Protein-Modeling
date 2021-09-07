@@ -490,6 +490,8 @@ def multi_seq_fasta():
                     [sg.Text('Select RAST Genome Annotation'), \
                     sg.InputText(key='--src'), sg.FileBrowse()],
                     [sg.Text('Keywords')] + [sg.Input(key='--keywords')],
+                    [sg.Text("Include Rows with EC Numbers Included?"), \
+                    sg.InputOptionMenu(["Yes","No"], default_value="Yes", key="-include_ec-")],
                     [sg.Text('Output Fasta Filename')] \
                         + [sg.Input(key='--dest')],
                     [sg.Text('Destinatin Folder for Output Fasta File'), \
@@ -536,6 +538,9 @@ def multi_seq_fasta():
                     if event == sg.WIN_CLOSED:
                         break
                     elif event == 'Go':
+                        use_ec = False
+                        if values["-include_ec-"] == "Yes":
+                            use_ec = True
                         args =  {
                             '--src'                     : values['--src'],
                             '--dest'                    : values['--src'],
@@ -550,10 +555,14 @@ def multi_seq_fasta():
                             '--max_uniprot_hits'        : None,
                             '--from_downloaded_blast'   : False,
                             '--BLAST_rslts_path'        : None,
+                            '--has_ec'                  : True
                         }  
-                        reader = Annot_Reader(args)
+                        # Read the excel file
+                        df = pd.read_excel(args['--src']) 
+                        kw = Annot_Reader.parse_keywords(args['--keywords'])
                         window.close()
-                        fasta = cmpl_mult_seq_fasta(reader, \
+                        rows = Annot_Reader.compile_rows(df, kw, True)
+                        fasta = cmpl_mult_seq_fasta(df, rows, \
                             values_2['protein col'], values_2['id col'])
                         f = open(values['--dest'], 'w')
                         f.write(fasta.strip())
@@ -566,12 +575,13 @@ def multi_seq_fasta():
     
         
         
-def cmpl_mult_seq_fasta(reader, seq_col, loc_col):
+def cmpl_mult_seq_fasta(df, rows, seq_col, loc_col):
     """
     Parses a genome annotation excel file sequences to add to a multisequence 
     fasta file.
     
-    :param reader: An instance of the Annot_Reader class.
+    :param df: The Pandas dataframe to process
+    :param rows: A set of rows to progress from df
     :param seq_col: Column containing the aa sequence.
     :param loc_col: Column containing the ids for proteins
     :return: String of the fasta file to write
@@ -579,23 +589,22 @@ def cmpl_mult_seq_fasta(reader, seq_col, loc_col):
     ids = {}
     seq = ""
     fasta = ""
-    for row in reader.rows:
-        seq = reader.df[seq_col][row]
+    # Compile the fasta sequences
+    for row in rows:
+        seq = df[seq_col][row]
         seq_id = ""
         # Check is the sequence ID is unique or not
-        if reader.df[loc_col][row] in ids.keys():  
+        if df[loc_col][row] in ids.keys():  
             # If not unique, then make it unique
-            c = ids[reader.df[loc_col][row]]['count']
-            seq_id = reader.df[loc_col][row] + "(" + str(c) + ")"
-            ids[reader.df[loc_col][row]]['count'] += 1
-            print("not unique", end="")
-            print("\t-\t" + str(seq_id))
+            c = ids[df[loc_col][row]]['count']
+            seq_id = df[loc_col][row] + "(" + str(c) + ")"
+            ids[df[loc_col][row]]['count'] += 1
         else:
-            seq_id = reader.df[loc_col][row]
-            ids[reader.df[loc_col][row]] =  {
-                                                "id" : reader.df[loc_col][row],
-                                                "count" : 1
-                                            }
+            seq_id = df[loc_col][row]
+            ids[df[loc_col][row]] = {
+                                        "id" : df[loc_col][row],
+                                        "count" : 1
+                                    }
         # Add to fasta file as a string
         try:
             if type(seq) == type("str"):
@@ -614,6 +623,8 @@ def main():
                     [sg.Text('Bulk Protein Modeling', size=(20, 1), \
                     justification='center', font=("Helvetica", 25), \
                     relief=sg.RELIEF_RIDGE)], 
+                    [sg.Button("Protein Modeling", \
+                               key="protein_modeling")],
                     [sg.Button("Compile Multisequence Fasta File", \
                                key="multi_seq_fasta")],
                 ]
@@ -631,6 +642,8 @@ def main():
         elif event == "multi_seq_fasta":
             window.close()
             multi_seq_fasta()
+        elif event == "protein_modeling":
+            window.close()
         
     window.close()
     
