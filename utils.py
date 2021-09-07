@@ -37,36 +37,6 @@ def check_cmd_args(args):
         print(err)
         usage()
         exit()
-        
-        
-def cmpl_mult_seq_fasta(reader, seq_col, loc_col):
-    """
-    Parses a genome annotation excel file sequences to add to a multisequence 
-    fasta file.
-    
-    :param reader: An instance of the Annot_Reader class.
-    :param seq_col: Column containing the aa sequence.
-    :param loc_col: Column containing the ids for proteins
-    :return: String of the fasta file to write
-    """
-    ids = {}
-    seq = ""
-    fasta = ""
-    for row in reader.rows:
-        seq = reader.df[seq_col][row]
-        seq_id = ""
-        if reader.df[loc_col][row] in ids.keys():
-            c = ids[reader.df[loc_col][row]]['count']
-            seq_id = reader.df[loc_col][row] + "(" + str(c) + ")"
-            ids[reader.df[loc_col][row]]['count'] += 1
-        else:
-            seq_id = reader.df[loc_col][row]
-            ids[reader.df[loc_col][row]] =  {
-                                                "id" : reader.df[loc_col][row],
-                                                "count" : 1
-                                            }
-        fasta += ">" + seq_id + "\n" + seq + "\n\n"
-    return fasta
     
     
 def cpu_count():
