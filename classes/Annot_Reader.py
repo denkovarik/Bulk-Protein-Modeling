@@ -52,7 +52,10 @@ class Annot_Reader():
         else:
             self.open_job(self.src, self.dest, self.sheet, self.args['--visible'])
             kw = Annot_Reader.parse_keywords(args['--keywords'])
-            self.compile_rows(kw)
+            has_ec = False
+            if '--has_ec' in args and args['--has_ec']:
+                has_ec = True     
+            self.rows = Annot_Reader.compile_rows(self.df, kw, has_ec)
           
         
     def __del__(self):
@@ -109,20 +112,28 @@ class Annot_Reader():
         self.nt_seq = {}
         self.cols = {}
             
-        
-    def compile_rows(self, keywords):
+    
+    @staticmethod
+    def compile_rows(df, keywords, has_ec=False):
         """
         Compiles a list of rows to blast.
         
-        :param self: The instance of the Annot_Reader
+        :param df: The Pandas dataframe to parse
         :param keywords: The keywords to match on
+        :param has_ec: Indicates whether to include rows where the ec number 
+                       is already included.
+        :return: List of rows to process
         """
-        for ind in self.df.index:
-            entry = self.df['function'][ind]
-            if Annot_Reader.matches_keywords(entry, keywords) \
-            and not Annot_Reader.has_ec(entry):
-                self.rows.add(ind)
-                
+        rows = set(())
+        for ind in df.index:
+            entry = df['function'][ind]
+            if Annot_Reader.matches_keywords(entry, keywords):
+                if not has_ec:
+                    if not Annot_Reader.has_ec(entry):
+                        rows.add(ind)
+                else:
+                    rows.add(ind)
+        return rows
         
     @staticmethod
     def has_ec(word):
@@ -322,7 +333,7 @@ class Annot_Reader():
             if not os.path.isfile(src):
                 raise Exception("Could not create file " + dest)
         # Read the file with pandas
-        self.df = pd.read_excel(dest)        
+        self.df = pd.read_excel(dest)  
         self.app = xw.App(visible=visible)
         self.book = xw.Book(dest)
         self.wks = xw.sheets
