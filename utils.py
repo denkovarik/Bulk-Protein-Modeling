@@ -84,8 +84,6 @@ def exec_commands(cmds, msg = '| Running Commands'):
     processes = []
     cur_job = 0
     num_jobs = len(cmds)
-    sg.OneLineProgressMeter('BLASTing Sequences...', cur_job, \
-        num_jobs, 'BLASTing Sequences...')
     bar = IncrementalBar(msg, max = len(cmds))
     while True:
         while cmds and len(processes) < max_task:
@@ -97,9 +95,6 @@ def exec_commands(cmds, msg = '| Running Commands'):
             if done(p):
                 if success(p):
                     processes.remove(p)
-                    cur_job += 1
-                    sg.OneLineProgressMeter('BLASTing Sequences...', cur_job, \
-                        num_jobs, 'BLASTing Sequences...')
                     bar.next()
                 else:
                     fail()
@@ -391,7 +386,27 @@ def run_psi_blast(psiblast, queries, blast_rslt_dir, blast_working_dir):
     # Compile the commands line commands to run the PSI algorithm 
     commands = psiblast.compile_cmd(psiblast.args, blast_rslt_dir, blast_working_dir)
     #Execute the commands
-    psiblast.exec_commands_gui(commands)
+    psiblast.exec_commands(commands)
+    # Remove the Working Directory for the PSI BLAST Algorithm
+    if os.path.isdir(blast_working_dir):
+        shutil.rmtree(blast_working_dir)
+        
+     
+def run_psi_blast_gui(psiblast, queries, blast_rslt_dir, blast_working_dir):
+    """
+    Runs the PSI BLAST algorithm for the gui version
+    
+    :param psiblast: A PSI_BLAST object to run the PSI BLAST algorithm
+    :param queries: Dictionary of queries consisting of sequences identified 
+                    by their name as the keys.
+    :param blast_rslt_dir: Directory to store the BLAST results
+    :param blast_working_dir: Temp working directory for BLAST algorithm.
+    """
+    # Compile the commands line commands to run the PSI algorithm 
+    commands = psiblast.compile_cmd(psiblast.args, blast_rslt_dir, blast_working_dir)
+    #Execute the commands
+    msg = "Running PSI BLAST Algorithm..."
+    psiblast.exec_commands_gui(commands, msg)
     # Remove the Working Directory for the PSI BLAST Algorithm
     if os.path.isdir(blast_working_dir):
         shutil.rmtree(blast_working_dir)
