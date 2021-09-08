@@ -17,6 +17,11 @@ import shutil
 import xlwings as xw
 import pandas as pd
 from classes.Annot_Reader import *
+from classes.PSI_BLAST import PSI_BLAST
+from run_psiblast_utils import *
+from classes.BLAST_Rslts_Itr import BLAST_Rslts_Itr
+from classes.strategy import Outfmt_0_Strat
+from Bio.PDB import *
 from utils import *
 import math
 
@@ -115,226 +120,6 @@ def add_required_folderpath_cmd_args(values, tag, name):
     path = values[tag].strip() + '/'
     cmd_args += [path.replace("/","\\")]
     return cmd_args
-
-
-def build_cmd_args_dwnl_BLAST(values, event):
-    """
-    Builds a list of command line arguements needed for the program
-    
-    :param values: The values entered into the GUI fields
-    :param event: The events that happened in the GUI.
-    :return: A list of command line arguements needed for the program.
-    """
-    cmd_args = ['ec_scrape_gui.py']
-    # Source file
-    tag = '--src'
-    name = 'Source RAST Genome Annotation '
-    cmd_args += add_required_filepath_cmd_args(values, tag, name)
-    # Destination file
-    if values['--dest'] == '':
-        layout = [[sg.Text("Destination file is required", font=32)]]
-        window = sg.Window("Destination file is required", layout, \
-                 modal=True)
-        while True:
-            event, values = window.read()
-            if event == "Exit" or event == sg.WIN_CLOSED:
-                break
-        exit()
-    if values['--dest'].split('.')[-1] != 'xlsx':
-        layout = [[sg.Text("Destination file must be a .xlsx file", font=32)]]
-        window = sg.Window("Destination file must be a .xlsx file", layout, \
-                 modal=True)
-        while True:
-            event, values = window.read()
-            if event == "Exit" or event == sg.WIN_CLOSED:
-                break
-        exit()
-    dest = values['--dest']
-    cmd_args += ['--dest']
-    cmd_args += [dest.replace("/","\\")]
-    # Email
-    tag = '--email'
-    name = "Email "
-    cmd_args += add_required_cmd_args(values, tag, name)
-    # Optional keywords argument
-    tag = '--keywords'
-    cmd_args += add_optional_cmd_args(values, tag)
-    # Optional Min Query Cover Arg
-    tag = '--min_qry_cvr'
-    cmd_args += add_optional_cmd_args(values, tag)
-    # Optional Min Per. Ident
-    tag = '--min_pct_idnt'
-    cmd_args += add_optional_cmd_args(values, tag)
-    # Optional Max Blast Hits to Use Arg
-    tag = '--max_blast_hits'
-    cmd_args += add_optional_cmd_args(values, tag)
-    # Optional Max Uniprot Hits to Use Arg
-    tag = '--max_uniprot_hits'
-    cmd_args += add_optional_cmd_args(values, tag)
-    cmd_args += ['--from_downloaded_blast']
-    cmd_args += ['True']
-    # BLAST results path
-    tag = '--BLAST_rslts_path'
-    name = 'Path to BLAST results file '
-    cmd_args += add_required_folderpath_cmd_args(values, tag, name)
-    return cmd_args
-    
-    
-def build_cmd_args_online_BLAST(values, event):
-    """
-    Builds a list of command line arguements needed for the program
-    
-    :param values: The values entered into the GUI fields
-    :param event: The events that happened in the GUI.
-    :return: A list of command line arguements needed for the program.
-    :return: None if an error occured.
-    """
-    cmd_args = ['ec_scrape_gui.py']
-    # Blast program to used
-    if values['--program'].strip() == '':
-        sg.popup("BLAST Program is required")
-        return None
-    cmd_args += ['--program']
-    cmd_args += [values['--program'].strip()]
-    # Source file
-    if values['--src'].strip() == "":
-        sg.popup("Input RAST Genome Annotation is required")
-        return None
-    cmd_args += ['--src']
-    cmd_args += [values['--src'].replace("/","\\").strip()]
-    # Destination filename
-    if values['--dest'] == '':
-        sg.popup("Destination file is required")
-        return None
-    # Check for correct file extension
-    if values['--dest'].split('.')[-1] != 'xlsx':
-        sg.popup("Destination file must be a .xlsx file")
-        return None
-    # Destination folder
-    if values['--outDir'] == '':
-        sg.popup("Folder for Destination file is required")
-        return None
-    dest = values['--outDir'] + '/' + values['--dest']
-    cmd_args += ['--dest']
-    cmd_args += [dest.replace("/","\\")]
-    # Email
-    if values['--email'].strip() == '':
-        sg.popup("User email is required")
-        return None
-    cmd_args += ['--email']
-    cmd_args += [values['--email']]
-    # Optional keywords argument
-    if values['--keywords'].strip() != "":
-        cmd_args += ['--keywords']
-        cmd_args += [values['--keywords'].strip()] 
-    # Optional Number of Threads Arg
-    cmd_args += ['--num_threads']
-    cmd_args += [values['--num_threads']]
-    # Optional Min Query Cover Arg
-    cmd_args += ['--min_qry_cvr']
-    cmd_args += [values['--min_qry_cvr']]
-    # Optional Min Per. Ident
-    cmd_args += ['--min_pct_idnt']
-    cmd_args += [values['--min_pct_idnt']]
-    # Optional Max Blast Hits to Use Arg
-    cmd_args += ['--max_blast_hits']
-    cmd_args += [int(values['--max_blast_hits'])]
-    # Optional Max Uniprot Hits to Use Arg
-    cmd_args += ['--max_uniprot_hits']
-    cmd_args += [int(values['--max_uniprot_hits'])]
-    return cmd_args
-    
-    
-def build_ec_scrape_via_dwnl_blast_rslt_layout():
-    """
-    Builds the layout of the window for ec_scrape_via_dwnl_blast_rslt().
-    
-    :return: The layout for the ec_scrape_via_dwnl_blast_rslt() window.
-    """
-    delim2 = '-----------------------------------------------------------------'
-    delim2 += '----------------------------------------------------------------'
-    delim2 += '-----------------------------'
-    delim = '================================================================='
-    delim += '=========================='
-    layout = [
-                [sg.Text("EC-Scrape via Downloaded BLAST Results")],
-                [sg.Text(delim)],
-                [sg.Text("Required Parameters")],
-                [sg.Text(delim2)],
-                [sg.Text('Select Input RAST Genome Annotation'), \
-                    sg.InputText(key='--src'), sg.FileBrowse()],
-                [sg.Text('Filename for RAST Genome Annotation to Write')] \
-                    + [sg.Input(key='--dest')],
-                [sg.Text('Select Folder Holding Downloaded BLAST Results'), \
-                    sg.InputText(key='--BLAST_rslts_path'), \
-                    sg.FolderBrowse()],
-                [sg.Text('Email')] + [sg.Input(key='--email')],
-                [sg.Text("\nOptional Parameters")],
-                [sg.Text(delim2)],
-                [sg.Text('Keywords')] + [sg.Input(key='--keywords')],
-                [sg.Text('Min Query Cover')] \
-                    + [sg.Input(key='--min_qry_cvr')],
-                [sg.Text('Min Per. Ident')] \
-                    + [sg.Input(key='--min_pct_idnt')],
-                [sg.Text('Max BLAST Hits')] \
-                    + [sg.Input(key='--max_blast_hits')],
-                [sg.Text('Max Uniprot Hits')] \
-                    + [sg.Input(key='--max_uniprot_hits')],
-                [sg.Button("Go", key="go_dwnl_ec")],                    
-             ]
-    return layout
-
-    
-def build_ec_scrape_via_online_blast_rslt_layout():
-    """
-    Builds the layout of the window for ec_scrape_via_dwnl_blast_rslt().
-    
-    :return: The layout for the ec_scrape_via_dwnl_blast_rslt() window.
-    """
-    delim2 = '-----------------------------------------------------------------'
-    delim2 += '----------------------------------------------------------------'
-    delim2 += '-----------------------------'
-    delim = '================================================================='
-    delim += '=========================='
-    # ------ Menu Definition ------ #      
-    
-    layout = [
-        [sg.Text('EC-Scrape via Online BLAST', size=(35, 1), \
-            justification='center', font=("Helvetica", 25), \
-            relief=sg.RELIEF_RIDGE)],   
-        [sg.Text('Required Parameters', justification='left', \
-            font=("Helvetica", 15))], 
-        [sg.Text('Select BLAST Program'), \
-            sg.InputOptionMenu(('blastx', 'blastp'), key='--program')],
-        [sg.Text('Input RAST Genome Annotation'), \
-            sg.InputText(key='--src'), sg.FileBrowse()],
-        [sg.Text('Output RAST Genome Annotation Filename')] \
-            + [sg.Input(key='--dest')],
-        [sg.Text('Output RAST Genome Annotation Folder'), \
-            sg.InputText(key='--outDir'), \
-            sg.FolderBrowse()],
-        [sg.Text('Email')] + [sg.Input(key='--email')],
-        [sg.Text('')],
-        [sg.Text('Optional Parameters', justification='left', \
-            font=("Helvetica", 15))], 
-        [sg.Text('Keywords')] + [sg.Input(key='--keywords')],
-        [sg.Text('\nNumber of Threads')] +  [sg.Slider(range=(1, 50),\
-            orientation='h', size=(34, 20), default_value=1, \
-            key='--num_threads')],
-        [sg.Text('\nMin Query Cover')] +  [sg.Slider(range=(0, 100),\
-            orientation='h', size=(34, 20), default_value=90, \
-            key='--min_qry_cvr')],
-        [sg.Text('\nMin Per. Ident')] + [sg.Slider(range=(0, 100), \
-            orientation='h', size=(34, 20), default_value=98, \
-            key='--min_pct_idnt')],
-        [sg.Text('\nMax BLAST Hits')] + [sg.Slider(range=(1, 50), \
-            orientation='h', size=(34, 20), default_value=5, \
-            key='--max_blast_hits')],
-        [sg.Text('\nMax Uniprot Hits')] + [sg.Slider(range=(1, 50), \
-            orientation='h', size=(34, 20), default_value=5, \
-            key='--max_uniprot_hits')],
-        [sg.Button("Go", key="go_online_ec")],]
-    return layout  
     
     
 def check_multi_seq_fasta_args(values, err):
@@ -367,115 +152,69 @@ def check_multi_seq_fasta_args(values, err):
     values['--dest'] = dest.replace("/","\\")
     # Optional keywords argument
     values['--keywords'] = values['--keywords'].strip()
-    
     return values, err
-                    
-                    
-def create_new_job():
+    
+      
+def check_protein_modeling_args(values, err):
     """
-    Creates a new job for EC-Scrape via online BLAST queries.
+    Checks the required arguements to run protein modeling.
+    
+    :param values: Input values from the GUI.
+    :param err: Boolean value for indicating if an error occured.
+    :return: List of values for gui.
+    :return: Boolean value indicating if an error occured.
     """
-    layout = build_ec_scrape_via_online_blast_rslt_layout()
-    window = sg.Window("EC-Scrape via Online BLAST Results", \
-        layout, resizable=True, \
-        finalize=True, modal=True)
-    choice = None
-    while True:
-        event, values = window.read()
-        if event == "Exit" or event == sg.WIN_CLOSED:
-            break
-        if event == "go_online_ec":
-            # Compile arguements for program
-            cmd_args = build_cmd_args_online_BLAST(values, event)
-            if cmd_args is not None:
-                window.close()
-                args = parse_args_ec_scrape(cmd_args)
-                # Annot_Reader class to read and write to genome annotation
-                reader = Annot_Reader(args)
-                online_blast_ec_scrape(reader, args)
-                msg = "EC-Scrape from Online BLAST Results has Completed"
-                sg.popup(msg)
-
-
-def ec_scrape_via_dwnl_blast_rslt():
-    """
-    Scrapes online databases for EC numbers for proteins from downloaded BLAST 
-    results.
-    """
-    delim3 = '================================================================'
-    layout = build_ec_scrape_via_dwnl_blast_rslt_layout()
-    window = sg.Window("EC-Scrape via Downloaded BLAST Results", layout, resizable=True, \
-             finalize=True, modal=True)
-    choice = None
-    while True:
-        event, values = window.read()
-        if event == "Exit" or event == sg.WIN_CLOSED:
-            break
-        if event == "go_dwnl_ec":
-            window.close()
-            # Compile arguements for program
-            cmd_args = build_cmd_args_dwnl_BLAST(values, event)
-            args = parse_args_ec_scrape(cmd_args)
-            # Annot_Reader class to read and write to genome annotation
-            reader = Annot_Reader(args)
-            # Check for necessary command line arguments
-            check_dl_blast_args(args)
-            # Build a dictionary mapping proteins by contig location
-            loc2row = {}
-            for ind in reader.df.index:
-                loc = reader.df['location'][ind]
-                loc2row[loc] = ind
-            # Parse results in --BLAST_rslts_path
-            num_rslts = len(os.listdir(args['--BLAST_rslts_path']))
-            bar = IncrementalBar('| Processing Downloaded BLAST Results...', \
-                    max = num_rslts)
-            i = 0
-            ec_added = 0
-            for file in os.listdir(args['--BLAST_rslts_path']):
-                if dl_blast_prcs_hit(file, reader, args, loc2row):
-                    ec_added += 1
-                sg.OneLineProgressMeter('Processing BLAST Results...', i + 1, \
-                        num_rslts, 'Processing Downloaded BLAST Results...')
-                bar.next()
-                i += 1
-            layout =    [
-                            [sg.Text("EC-Scrape from Downloaded BLAST Results has Completed")],
-                            [sg.Text("EC Numbers were Found for an Additional " \
-                                    + str(ec_added) + " Proteins")],
-                            [sg.Button("Quit", \
-                                key="quit")],
-                        ]
-            window = sg.Window("Complete", layout, modal=True)
-            while True:
-                event, values = window.read()
-                if event == "Exit" or event == sg.WIN_CLOSED:
-                    break
-                elif event == "quit":
-                    window.close()
-
-
-def ec_scrape_via_online_blast():
-    """
-    Scrapes online databases for EC numbers for proteins from BLAST query 
-    results submitted online.
-    """
-    layout =    [
-                    [sg.Text("EC-Scrape via Online BLAST", font=32)],
-                    [sg.Button("New Job", key="new")],
-                    [sg.Button("Load Job", key="new")],
-                ]
-    window = sg.Window("EC-Scrape via Online BLAST", layout, \
-             resizable=True, finalize=True, modal=True)
-    choice = None
-    while True:
-        event, values = window.read()
-        if event == "Exit" or event == sg.WIN_CLOSED:
-            break
-        elif event == 'new':
-            window.close()
-            create_new_job()
+    # Source genome annotation
+    if values['-query_parallel'].strip() == "":
+        sg.popup("Input fasta file is required")
+        err = True
+    values['-query_parallel'] = values['-query_parallel'].replace("/","\\").strip()
+    # Destination folder
+    if values['-db'] == '':
+        sg.popup("Path to pdbaa database is required")
+        err = True
+    dest = values['-db'] + '/' + "pdbaa"
+    values['-db'] = dest.replace("/","\\")
+    return values, err
+            
         
-    window.close()
+def cmpl_mult_seq_fasta(df, rows, seq_col, loc_col):
+    """
+    Parses a genome annotation excel file sequences to add to a multisequence 
+    fasta file.
+    
+    :param df: The Pandas dataframe to process
+    :param rows: A set of rows to progress from df
+    :param seq_col: Column containing the aa sequence.
+    :param loc_col: Column containing the ids for proteins
+    :return: String of the fasta file to write
+    """
+    ids = {}
+    seq = ""
+    fasta = ""
+    # Compile the fasta sequences
+    for row in rows:
+        seq = df[seq_col][row]
+        seq_id = ""
+        # Check is the sequence ID is unique or not
+        if df[loc_col][row] in ids.keys():  
+            # If not unique, then make it unique
+            c = ids[df[loc_col][row]]['count']
+            seq_id = df[loc_col][row] + "(" + str(c) + ")"
+            ids[df[loc_col][row]]['count'] += 1
+        else:
+            seq_id = df[loc_col][row]
+            ids[df[loc_col][row]] = {
+                                        "id" : df[loc_col][row],
+                                        "count" : 1
+                                    }
+        # Add to fasta file as a string
+        try:
+            if type(seq) == type("str"):
+                fasta += ">" + str(seq_id) + "\n" + str(seq) + "\n\n"                
+        except Exception as e:
+            print(e)
+    return fasta
     
     
 def multi_seq_fasta():
@@ -490,7 +229,7 @@ def multi_seq_fasta():
                     [sg.Text('Select RAST Genome Annotation'), \
                     sg.InputText(key='--src'), sg.FileBrowse()],
                     [sg.Text('Keywords')] + [sg.Input(key='--keywords')],
-                    [sg.Text("Include Rows with EC Numbers Included?"), \
+                    [sg.Text("Include Rows with EC Numbers Present?"), \
                     sg.InputOptionMenu(["Yes","No"], default_value="Yes", key="-include_ec-")],
                     [sg.Text('Output Fasta Filename')] \
                         + [sg.Input(key='--dest')],
@@ -569,49 +308,96 @@ def multi_seq_fasta():
                         f.close()
                         sg.popup("Multi-sequence Fasta File has been Compilied")
                         window.close()
-        
     window.close()
     
     
-        
-        
-def cmpl_mult_seq_fasta(df, rows, seq_col, loc_col):
+def protein_modeling(args):
     """
-    Parses a genome annotation excel file sequences to add to a multisequence 
-    fasta file.
+    Runs the protein modeling
     
-    :param df: The Pandas dataframe to process
-    :param rows: A set of rows to progress from df
-    :param seq_col: Column containing the aa sequence.
-    :param loc_col: Column containing the ids for proteins
-    :return: String of the fasta file to write
+    :param args: List of arguements
     """
-    ids = {}
-    seq = ""
-    fasta = ""
-    # Compile the fasta sequences
-    for row in rows:
-        seq = df[seq_col][row]
-        seq_id = ""
-        # Check is the sequence ID is unique or not
-        if df[loc_col][row] in ids.keys():  
-            # If not unique, then make it unique
-            c = ids[df[loc_col][row]]['count']
-            seq_id = df[loc_col][row] + "(" + str(c) + ")"
-            ids[df[loc_col][row]]['count'] += 1
-        else:
-            seq_id = df[loc_col][row]
-            ids[df[loc_col][row]] = {
-                                        "id" : df[loc_col][row],
-                                        "count" : 1
-                                    }
-        # Add to fasta file as a string
-        try:
-            if type(seq) == type("str"):
-                fasta += ">" + str(seq_id) + "\n" + str(seq) + "\n\n"                
-        except Exception as e:
-            print(e)
-    return fasta
+    # Mark the Start Time
+    start_time = time.time()
+    # Create and init PSI_BLAST object
+    psiblast = PSI_BLAST("ncbi-blast-2.12.0+/bin/psiblast.exe", args)
+    # Compile command line arguments
+    queries = PSI_BLAST.parse_fasta(psiblast.args['script_args']['-query_parallel'])
+    # Run the PSI BLAST Algorithm
+    blast_rslt_dir = 'blast_rslts\\'
+    blast_working_dir = 'temp_blast\\'
+    run_psi_blast(psiblast, queries, blast_rslt_dir, blast_working_dir) 
+    pdb_dir = "pdb\\"
+    align_dir = "align\\"
+    # Run protein alignment
+    align_files, templates = protein_alignment_gui(queries, blast_rslt_dir, pdb_dir, align_dir)
+    # Delete pdb files
+    shutil.rmtree(pdb_dir)
+    # Delete blast results files
+    shutil.rmtree(blast_rslt_dir)
+    print("\n")
+    # Run protein modeling
+    protein_model_rslt_dir = 'protein_models'
+    protein_modeling_gui(align_files, align_dir, protein_model_rslt_dir)
+    print("\n")
+
+    # Delete alignment files
+    shutil.rmtree(align_dir)
+    # Remove templates
+    for temp in templates:
+        if os.path.isfile(temp):
+            os.remove(temp)
+
+    tot_seconds = time.time() - start_time
+    minutes = int(tot_seconds / 60.0)
+    seconds = int(tot_seconds % 60.0)
+    minute_str = "minutes"
+    second_str = "seconds"
+    if minutes == 1:
+        minute_str = "minute"
+    if seconds == 1:
+        second_str = "second"
+    print("---Runtime: " + str(minutes) + " " + minute_str + " and " \
+        + str(seconds)  + " " + second_str + " ---")
+    sg.popup("Protein Modeling is Complete!")
+    
+    
+def protein_modeling_setup():
+    """
+    Runs gui version of the protein modeling.
+    """
+    layout =    [
+                    [sg.Text('Protein Modeling', size=(35, 1), \
+                    justification='center', font=("Helvetica", 25), \
+                    relief=sg.RELIEF_RIDGE)], 
+                    [sg.Text("")],
+                    [sg.Text('Select FASTA File Containing Protein Sequences to Model'), \
+                    sg.InputText(key='-query_parallel'), sg.FileBrowse()],
+                    [sg.Text('Select Folder Containing the pdbaa Database'), \
+                        sg.InputText(key='-db'), \
+                        sg.FolderBrowse()],
+                    [sg.Button("Go", key="-model_proteins-")],
+                ]
+    window = sg.Window("Protein Modeling", layout, \
+             resizable=True, finalize=True, modal=True)
+    choice = None
+    args = {}
+    while True:
+        err = False
+        event, values = window.read()
+        if event == sg.WIN_CLOSED:
+            break
+        elif event == '-model_proteins-':
+            values, err = check_protein_modeling_args(values, err)
+            if not err:
+                args = ['trash']
+                for key in values.keys():
+                    args += [key]
+                    args += [values[key]]
+                window.close()
+                protein_modeling(args)
+                
+    window.close()
     
     
 def main():
@@ -644,6 +430,7 @@ def main():
             multi_seq_fasta()
         elif event == "protein_modeling":
             window.close()
+            protein_modeling_setup()
         
     window.close()
     
