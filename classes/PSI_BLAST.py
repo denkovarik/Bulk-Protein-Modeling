@@ -294,14 +294,17 @@ class PSI_BLAST():
         f = open(filepath, 'r')
         content = f.read()
         f.close()
-        content = content.split("\n")
+        content = content.split(">")
+        content.remove("")
         i = 0
         while i < len(content):
-            if len(content[i].strip()) > 0:
-                if content[i].strip()[0] == '>':
-                    des = content[i][1:].strip()
-                    queries[des] = content[i+1] 
-                    i += 1
+            des = content[i][:content[i].find("\n")]
+            des = des.replace("\n", "")
+            des = des.replace(" ", "_")
+            des = des.replace("=", "_eq_")
+            des = des.replace("|", "_")
+            seq = content[i][content[i].find("\n")+1:]
+            queries[des] = seq.replace("\n", "")
             i += 1
         return queries   
 
