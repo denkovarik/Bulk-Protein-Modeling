@@ -161,7 +161,7 @@ class PSI_BLAST():
                 time.sleep(0.05)
                         
 
-    def exec_commands_gui(self, cmds):
+    def exec_commands_gui(self, cmds, msg):
         ''' Exec commands in parallel in multiple process 
         (as much as we have CPU)
         '''
@@ -178,9 +178,9 @@ class PSI_BLAST():
         processes = []
         cur_job = 0
         num_jobs = len(cmds)
-        sg.OneLineProgressMeter('BLASTing Sequences...', cur_job, \
-                        num_jobs, 'BLASTing Sequences...')
-        bar = IncrementalBar('| BLASTing Sequences...\t', max = num_jobs)
+        sg.OneLineProgressMeter(msg, cur_job, \
+                        num_jobs, msg)
+        bar = IncrementalBar(msg, max = num_jobs)
         while True:
             while cmds and len(processes) < max_task:
                 task = cmds.pop()
@@ -200,8 +200,8 @@ class PSI_BLAST():
                         processes.remove(p)
                         bar.next()
                         cur_job += 1
-                        sg.OneLineProgressMeter('BLASTing Sequences...', cur_job, \
-                            num_jobs, 'BLASTing Sequences...')
+                        sg.OneLineProgressMeter(msg, cur_job, \
+                            num_jobs, msg)
                     else:
                         fail()
 
