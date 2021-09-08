@@ -10,7 +10,29 @@ from subprocess import Popen, list2cmdline
 from utils import *
 from progress.bar import IncrementalBar
 
-  
+
+# Define filepaths
+blast_rslt_dir = 'blast_rslts\\'
+blast_working_dir = 'temp_blast\\'
+pdb_dir = "pdb\\"
+align_dir = "align\\"
+protein_model_rslt_dir = 'protein_models'
+# Delete old files used for protein alignment
+# Delete blast results files
+if os.path.isdir(blast_rslt_dir):
+    shutil.rmtree(blast_rslt_dir)
+# Delete blast temp files
+if os.path.isdir(blast_working_dir):
+    shutil.rmtree(blast_working_dir)
+# Delete pdb template files
+if os.path.isdir(pdb_dir):
+    shutil.rmtree(pdb_dir)
+# Delete alignment files
+if os.path.isdir(align_dir):
+    shutil.rmtree(align_dir)
+# Delete protein model results files
+if os.path.isdir(protein_model_rslt_dir):
+    shutil.rmtree(protein_model_rslt_dir)
 # Mark the Start Time
 start_time = time.time()
 # Create and init PSI_BLAST object
@@ -21,30 +43,25 @@ check_cmd_args(psiblast.args)
 queries = PSI_BLAST.parse_fasta(psiblast.args['script_args']['-query_parallel'])
 
 # Run the PSI BLAST Algorithm
-blast_rslt_dir = 'blast_rslts\\'
-blast_working_dir = 'temp_blast\\'
 run_psi_blast(psiblast, queries, blast_rslt_dir, blast_working_dir)       
 print("\n")
 
 
 # Create directory for downloaded template files.
-pdb_dir = "pdb\\"
-align_dir = "align\\"
 # Run protein alignment
 align_files, templates = protein_alignment(queries, blast_rslt_dir, pdb_dir, align_dir)
 # Delete pdb files
 shutil.rmtree(pdb_dir)
 # Delete blast results files
-shutil.rmtree(blast_rslt_dir)
+#shutil.rmtree(blast_rslt_dir)
 print("\n")
 
 # Run protein modeling
-protein_model_rslt_dir = 'protein_models'
 protein_modeling(align_files, align_dir, protein_model_rslt_dir)
 print("\n")
 
 # Delete alignment files
-shutil.rmtree(align_dir)
+#shutil.rmtree(align_dir)
 # Remove templates
 for temp in templates:
     if os.path.isfile(temp):
