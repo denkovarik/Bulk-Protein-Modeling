@@ -51,7 +51,7 @@ class BLAST_Rslts_Itr():
         if Outfmt_0_Strat.is_outfmt_0(content, ext):
             self.strategy = Outfmt_0_Strat(content, filepath)
         else:
-            raise Exception("Unrecognized format for BLAST Results")
+            raise Exception("Unrecognized BLAST Results in " + filepath)
             
             
     def begin(self):

@@ -3,6 +3,7 @@ import subprocess
 from subprocess import Popen, list2cmdline
 import shutil
 from progress.bar import IncrementalBar
+import PySimpleGUI as sg
 
 
 class PSI_BLAST():
@@ -23,7 +24,7 @@ class PSI_BLAST():
             exit()
         # parse the cmd args
         self.prgm_path = prgm_path
-        self.args = self.parse_args(sys.argv)
+        self.args = self.parse_args(cmd_args)
         
         
     def compile_cmd(self, args, blast_rslt_dir, blast_working_dir):
@@ -158,6 +159,57 @@ class PSI_BLAST():
                 break
             else:
                 time.sleep(0.05)
+                        
+
+    def exec_commands_gui(self, cmds):
+        ''' Exec commands in parallel in multiple process 
+        (as much as we have CPU)
+        '''
+        if not cmds: return # empty list
+
+        def done(p):
+            return p.poll() is not None
+        def success(p):
+            return p.returncode == 0
+        def fail():
+            sys.exit(1)
+
+        max_task = self.cpu_count()
+        processes = []
+        cur_job = 0
+        num_jobs = len(cmds)
+        sg.OneLineProgressMeter('BLASTing Sequences...', cur_job, \
+                        num_jobs, 'BLASTing Sequences...')
+        bar = IncrementalBar('| BLASTing Sequences...\t', max = num_jobs)
+        while True:
+            while cmds and len(processes) < max_task:
+                task = cmds.pop()
+                i = 0
+                while i < len(task):
+                    file = ""
+                    if task[i] == '-query' and i < len(task) - 1:
+                        file = task[i+1]
+                        break
+                    i += 1
+                processes.append((Popen(task), file))
+
+            for p in processes:
+                if done(p[0]):
+                    if success(p[0]):
+                        os.remove(p[1])
+                        processes.remove(p)
+                        bar.next()
+                        cur_job += 1
+                        sg.OneLineProgressMeter('BLASTing Sequences...', cur_job, \
+                            num_jobs, 'BLASTing Sequences...')
+                    else:
+                        fail()
+
+            if not processes and not cmds:
+                break
+            else:
+                time.sleep(0.05)
+        print("\n")
                 
         
     def fix_win_filepath(self, filepath):
