@@ -56,6 +56,9 @@ def parse_args(cmd_args):
             if args['-results_dir'][-1] != "\\":
                 args['-results_dir'] = args['-results_dir'] + "\\"
             i += 1
+        elif cmd_args[i] == '-target_id':
+            args['-target_id'] = cmd_args[i+1]
+            i += 1
         i += 1
     return args
  
@@ -67,18 +70,18 @@ ali_path = args['-ali_path']
 # Create directories to hold results
 if not os.path.isdir(args['-results_dir']):
     os.mkdir(args['-results_dir'])
-if not os.path.isdir(args['-results_dir'] + protein_id):
-    os.mkdir(args['-results_dir'] + protein_id)
+if not os.path.isdir(args['-results_dir'] + args['-target_id']):
+    os.mkdir(args['-results_dir'] + args['-target_id'])
 # Copy files over
-dest = args['-results_dir'] + protein_id + "\\" + args['ali_filename']
+dest = args['-results_dir'] + args['-target_id'] + "\\" + args['ali_filename']
 if not os.path.isfile(dest):
     shutil.copy(ali_path, dest)
-dest = args['-results_dir'] + protein_id + "\\" + args['-template_path'] 
+dest = args['-results_dir'] + args['-target_id'] + "\\" + args['-template_path'] 
 if not os.path.isfile(dest):
     shutil.copy(args['-template_path'], dest)
 # Change into the correct directory
 os.chdir(args['-results_dir'])
-os.chdir(protein_id)
+os.chdir(args['-target_id'])
 log_file = open("model-single.log", "w")
 orig = sys.stdout
 sys.stdout = log_file  
