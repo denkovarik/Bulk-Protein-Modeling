@@ -22,6 +22,12 @@ This project was developed for the Window's Operating System on a 64 bit machine
 * PySimpleGUI
 * xlrd
 
+### Download and Install MODELLER
+This software relies on the MODELLER software to model the proteins. You can download the software [here](https://salilab.org/modeller/download_installation.html), although you will need a license for it.
+
+### Download and Install PyMOL
+After you have successfully modeled a protein, you will need to download software to view it. I suggest install [PyMol](https://pymol.org/2/) or [Discovery Studio Visualizer](https://discover.3ds.com/discovery-studio-visualizer-download) for Windows. Discovery Studio Visualizer is free to download. For PyMOL, you can download and use the trial version of the software for free (although its functionality is limited).
+
 ### Install Git on Windows
 The first thing you need to do is to make sure that Git is installed on your device. This will allow you to clone and download this repository on your device. If necessary, the tutorial [Install Git](https://github.com/git-guides/install-git) will walk you through how to do this.
 
@@ -42,13 +48,13 @@ If you get something like the above image, then python was installed correctly. 
 To download this repository on your device, you must clone this repo using either HTTPS or SSH. The easiest way to clone this repository on your local device is through HTTPS. If your SDK allows you to clone a repo through HTTPS, then do so. Otherwise, you can do it directly on the command prompt. To do so, open up the command prompt and move into the desired directory. Then simply run the following command and press Enter.
 
 ```
-git clone https://github.com/denkovarik/Annotate-KEGG-Pathway.git
+git clone https://github.com/denkovarik/Bulk-Protein-Modeling.git
 ```
 
-Enter in your credentials if prompted to do so. After the repo has been cloned on your device, move into the Annotate-KEGG-Pathway directory from the command line.
+Enter in your credentials if prompted to do so. After the repo has been cloned on your device, move into the Bulk-Protein-Modeling directory from the command line.
 
 ```
-cd Annotate-KEGG-Pathway
+cd Bulk-Protein-Modeling
 ```
 
 ### Cloning This Repo with SSH
@@ -63,11 +69,11 @@ Once you have an SSH Key Pair generated, you need to add your public SSH key to 
 #### Clone the Repository
 If your SDK allows for it, then clone this repository through your SDK. Otherwise, open up the command prompt, move into the directory of your choice, then run the following command.
 ```
-git clone git@github.com:denkovarik/Annotate-KEGG-Pathway.git
+git clone git@github.com:denkovarik/Bulk-Protein-Modeling.git
 ```
-After the repo has been cloned on your device, move into the Annotate-KEGG-Pathway directory from the command line.
+After the repo has been cloned on your device, move into the Bulk-Protein-Modeling directory from the command line.
 ```
-cd Annotate-KEGG-Pathway
+cd Bulk-Protein-Modeling
 ```
 
 ### Install Dependencies
