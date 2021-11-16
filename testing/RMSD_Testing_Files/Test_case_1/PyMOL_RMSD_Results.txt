@@ -1,0 +1,2 @@
+1GW0_template.pdb -- Bs.B99990001_target.pdb
+RMS = 0.153
